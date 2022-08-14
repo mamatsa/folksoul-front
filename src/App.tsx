@@ -1,7 +1,11 @@
-import React from 'react';
+import { Login } from 'pages';
 
 const App = () => {
-  return <div className='text-red-600'>App</div>;
+  return (
+    <>
+      <Login />
+    </>
+  );
 };
 
 export default App;
