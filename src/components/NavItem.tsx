@@ -11,11 +11,11 @@ const NavItem: React.FC<{ Icon: any; text: string; destination: string }> = ({
       to={destination}
       className={({ isActive }) =>
         isActive
-          ? 'w-full pl-4 pr-8 bg-white text-black'
-          : 'w-full pl-4 pr-8 text-white'
+          ? 'w-full pl-2 pr-2 bg-white text-black md:pl-4 md:pr-8'
+          : 'w-full pl-2 pr-2 text-white md:pl-4 md:pr-8'
       }
     >
-      <li className='flex py-2 items-center text-lg whitespace-nowrap'>
+      <li className='flex py-2 items-center text-sm whitespace-nowrap md:text-lg'>
         <div className='w-9 flex justify-start'>
           <Icon />
         </div>
