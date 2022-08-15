@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'bpg_nino_mtavruli_normal';
-  src: url(./fonts/bpg_nino_mtavruli_normal.ttf) format('TrueType');
+  src: url(./assets/fonts/bpg_nino_mtavruli_normal.ttf) format('TrueType');
 }
 
 @font-face {
   font-family: 'bpg_arial_2009';
-  src: url(./fonts/bpg_arial_2009.ttf) format('TrueType');
+  src: url(./assets/fonts/bpg_arial_2009.ttf) format('TrueType');
 }
 
 html {
@@ -23,6 +23,7 @@ h3,
 h4,
 h5,
 h6,
+li,
 button {
   font-family: 'bpg_nino_mtavruli_normal';
 }
