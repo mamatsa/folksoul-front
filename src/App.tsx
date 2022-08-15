@@ -1,7 +1,15 @@
-import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Login } from 'pages';
 
 const App = () => {
-  return <div className='text-red-600'>App</div>;
+  return (
+    <Router>
+      <Routes>
+        <Route path='/login' element={<Login />} />
+        <Route path='/dashboard' element={<h1>დილამშვიდობისა!</h1>} />
+      </Routes>
+    </Router>
+  );
 };
 
 export default App;
