@@ -37,6 +37,15 @@ const Login = () => {
           type: 'backend',
           message: 'არასწორი მომხმარებელი ან პაროლი',
         });
+      } else {
+        setError('nickname', {
+          type: 'backend',
+          message: 'დაფიქსირდა შეცდომა',
+        });
+        setError('password', {
+          type: 'backend',
+          message: 'დაფიქსირდა შეცდომა',
+        });
       }
     }
   };
