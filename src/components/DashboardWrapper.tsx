@@ -5,6 +5,9 @@ import { NavItem } from 'components';
 const DashboardWrapper: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const logoutHandler = () => {
+    localStorage.removeItem('token');
+  };
   return (
     <div className='h-screen flex items-center'>
       <nav className='py-20 bg-nav-bg border-y border-r border-nav-border rounded-r-xl'>
@@ -13,7 +16,12 @@ const DashboardWrapper: React.FC<{ children: React.ReactNode }> = ({
           <NavItem Icon={NavMember} text='ჯგუფის წევრები' destination='/' />
           <NavItem Icon={NavSocial} text='სოციალური ბმულები' destination='/' />
           <NavItem Icon={NavAbout} text='ბენდის შესახებ' destination='/' />
-          <NavItem Icon={NavLogout} text='გადი გარეთ' destination='/' />
+          <NavItem
+            Icon={NavLogout}
+            text='გადი გარეთ'
+            destination='/'
+            logoutHandler={logoutHandler}
+          />
         </ul>
       </nav>
       <div className='w-full h-[90vh] flex justify-center items-center'>
