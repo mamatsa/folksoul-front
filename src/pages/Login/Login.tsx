@@ -1,5 +1,7 @@
 import { Input, Button, LoginWrapper } from 'pages/Login/components';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { loginRequest } from 'services';
+import { AxiosError } from 'axios';
 
 type Inputs = {
   nickname: string;
@@ -10,11 +12,28 @@ const Login = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    try {
+      const response = await loginRequest(data.nickname, data.password);
+      console.log(response);
+    } catch (error) {
+      const err = error as AxiosError;
+      const status = err.response?.status;
+      if (status === 400) {
+        setError('nickname', {
+          type: 'custom',
+          message: 'არასწორი მომხმარებელი ან პაროლი',
+        });
+        setError('password', {
+          type: 'custom',
+          message: 'არასწორი მომხმარებელი ან პაროლი',
+        });
+      }
+    }
   };
 
   return (
