@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const NavItem: React.FC<{
-  Icon: any;
+  Icon: () => JSX.Element;
   text: string;
   destination: string;
   logoutHandler?: () => void;
