@@ -2,6 +2,7 @@ import { Input, Button, LoginWrapper } from 'pages/Login/components';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { loginRequest } from 'services';
 import { AxiosError } from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 type Inputs = {
   nickname: string;
@@ -16,20 +17,24 @@ const Login = () => {
     formState: { errors },
   } = useForm<Inputs>();
 
+  const navigate = useNavigate();
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
       const response = await loginRequest(data.nickname, data.password);
-      console.log(response);
+      if (response.status === 'success') {
+        navigate('/dashboard');
+      }
     } catch (error) {
       const err = error as AxiosError;
       const status = err.response?.status;
       if (status === 400) {
         setError('nickname', {
-          type: 'custom',
+          type: 'backend',
           message: 'არასწორი მომხმარებელი ან პაროლი',
         });
         setError('password', {
-          type: 'custom',
+          type: 'backend',
           message: 'არასწორი მომხმარებელი ან პაროლი',
         });
       }
