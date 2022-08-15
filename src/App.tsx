@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Login } from 'pages';
+import { Login, Dashboard } from 'pages';
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path='/login' element={<Login />} />
-        <Route path='/dashboard' element={<h1>დილამშვიდობისა!</h1>} />
+        <Route path='/dashboard' element={<Dashboard />} />
       </Routes>
     </Router>
   );
