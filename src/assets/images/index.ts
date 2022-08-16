@@ -1,1 +1,1 @@
-export { default as DashboardTV } from './DashboardTV.png';
+export { default as DashboardTV } from './dashboard-tv.png';
