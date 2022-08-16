@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavMain, NavMember, NavSocial, NavAbout, NavLogout } from 'assets';
+import { NavMain, NavMember, NavSocial, NavAbout, NavLogout } from 'components';
 import { NavItem } from 'components';
 
 const DashboardWrapper: React.FC<{ children: React.ReactNode }> = ({
