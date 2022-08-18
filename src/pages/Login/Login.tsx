@@ -1,3 +1,4 @@
+import React from 'react';
 import { Input, Button, LoginWrapper } from 'pages/Login/components';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { loginRequest } from 'services';
@@ -9,7 +10,7 @@ type Inputs = {
   password: string;
 };
 
-const Login = () => {
+const Login: React.FC<{ onLogin: (token: string) => void }> = (props) => {
   const {
     register,
     handleSubmit,
@@ -23,6 +24,7 @@ const Login = () => {
     try {
       const response = await loginRequest(data.nickname, data.password);
       if (response.status === 'success') {
+        props.onLogin(response.data.JWTToken);
         navigate('/dashboard');
       }
     } catch (error) {

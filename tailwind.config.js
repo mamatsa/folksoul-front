@@ -21,6 +21,13 @@ module.exports = {
         'input-bg': '#C4B6B2',
         'login-button': '#345161',
         'error-red': '#CC1E1E',
+        'dashboard-bg': '#FBFBFB',
+        'dashboard-shadow': '#4D4D4D',
+        'nav-bg': '#333333',
+        'nav-border': '#898989',
+      },
+      boxShadow: {
+        inside: 'inset 4px 4px 20px #4D4D4D;',
       },
     },
   },

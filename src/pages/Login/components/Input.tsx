@@ -1,12 +1,13 @@
 import React from 'react';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 
 const Input: React.FC<{
   type: string;
   id: string;
   name: string;
   placeholder: string;
-  register: any;
-  errors: any;
+  register: UseFormRegister<any>;
+  errors: FieldErrors;
 }> = (props) => {
   const error = props.errors[props.name];
 
@@ -19,10 +20,13 @@ const Input: React.FC<{
             message: 'ეს ველი სავალდებულოა',
           },
           minLength: { value: 3, message: 'უნდა შეიყვანოთ მინიმუმ 3 სიმბოლო' },
-          pattern: props.name === 'nickname' && {
-            value: /^[a-z0-9ა-ჰ]*$/,
-            message: 'მხოლოდ დაბალი რეგისტრი და რიცხვები',
-          },
+          pattern:
+            props.name === 'nickname'
+              ? {
+                  value: /^[a-z0-9ა-ჰ]*$/,
+                  message: 'მხოლოდ დაბალი რეგისტრი და რიცხვები',
+                }
+              : undefined,
         })}
         type={props.type}
         id={props.id}
@@ -34,7 +38,7 @@ const Input: React.FC<{
       />
       {error && (
         <p className=' text-[13px] text-red-600 mt-0 ml-2 xs:absolute xs:bottom-1 xs:ml-5'>
-          {error.message}
+          {error.message as string}
         </p>
       )}
     </div>
