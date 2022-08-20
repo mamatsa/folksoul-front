@@ -10,10 +10,14 @@ const DashboardWrapper: React.FC<{ children: React.ReactNode }> = ({
   };
   return (
     <div className='h-screen flex items-center'>
-      <nav className='py-20 bg-nav-bg border-y border-r border-nav-border rounded-r-xl'>
+      <nav className='py-20 bg-dashboard-dark border-y border-r border-nav-border rounded-r-xl'>
         <ul className='flex flex-col gap-5 `'>
           <NavItem Icon={NavMain} text='მთავარი' destination='/dashboard' />
-          <NavItem Icon={NavMember} text='ჯგუფის წევრები' destination='/' />
+          <NavItem
+            Icon={NavMember}
+            text='ჯგუფის წევრები'
+            destination='/band-members'
+          />
           <NavItem Icon={NavSocial} text='სოციალური ბმულები' destination='/' />
           <NavItem Icon={NavAbout} text='ბენდის შესახებ' destination='/' />
           <NavItem
