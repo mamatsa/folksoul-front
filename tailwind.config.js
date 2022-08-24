@@ -28,10 +28,13 @@ module.exports = {
         'link-blue': '#3A7DA3',
         'member-card-blue': '#143B52',
         'button-green': '#53C02C',
+        'modal-bg': '#042639',
+        'content-white': '#FBFBFB',
       },
       boxShadow: {
         inside: 'inset 4px 4px 20px #4D4D4D;',
         card: '5px 5px 13px rgba(0, 0, 0, 0.63);',
+        icon: '2px 4px 14px #000000;',
       },
     },
   },
