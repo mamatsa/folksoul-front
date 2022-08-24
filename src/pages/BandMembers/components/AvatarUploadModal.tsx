@@ -5,7 +5,7 @@ const AvatarUploadModal: React.FC<{ closeModal: () => void }> = ({
   closeModal,
 }) => {
   return (
-    <div className='absolute top-0 left-0 w-screen h-screen bg-modal-bg bg-opacity-95 flex justify-center items-center'>
+    <div className='absolute top-0 left-0 w-screen h-screen bg-modal-bg bg-opacity-95 flex justify-center items-center z-10'>
       <div className='relative bg-white py-20 rounded-lg flex flex-col items-center justify-between gap-20'>
         <ExitButton closeHandler={closeModal} />
         <div className='w-full flex flex-col justify-center items-center'>

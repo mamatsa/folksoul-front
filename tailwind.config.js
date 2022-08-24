@@ -30,6 +30,8 @@ module.exports = {
         'button-green': '#53C02C',
         'modal-bg': '#042639',
         'content-white': '#FBFBFB',
+        'pagination-active': '#444444',
+        'pagination-inactive': '#C4C4C4',
       },
       boxShadow: {
         inside: 'inset 4px 4px 20px #4D4D4D;',
