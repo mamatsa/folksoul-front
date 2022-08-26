@@ -10,6 +10,7 @@ const BandMembers = () => {
   const [numberOfPages, setNumberOfPages] = useState<number>(0);
   const showPagination = numberOfPages >= 2;
   const [currentPage, setCurrentPage] = useState<number>(0);
+  const [memberChanged, setMemberChanged] = useState<number>(0);
 
   useEffect(() => {
     const getBandMembers = async () => {
@@ -22,7 +23,13 @@ const BandMembers = () => {
       }
     };
     getBandMembers();
-  }, []);
+  }, [memberChanged]);
+
+  const memberChangeHandler = () => {
+    setMemberChanged((prevState) => {
+      return prevState + 1;
+    });
+  };
 
   return (
     <>
@@ -37,7 +44,11 @@ const BandMembers = () => {
               bandMembers.map((bandMember, i) => {
                 if (i >= currentPage * 3 && i < (currentPage + 1) * 3) {
                   return (
-                    <MemberCard bandMember={bandMember} key={bandMember._id} />
+                    <MemberCard
+                      bandMember={bandMember}
+                      key={bandMember._id}
+                      memberChangeHandler={memberChangeHandler}
+                    />
                   );
                 } else {
                   return null;
@@ -49,6 +60,7 @@ const BandMembers = () => {
               {[...Array(numberOfPages)].map((e, i) => {
                 return (
                   <div
+                    key={i}
                     className={`w-5 h-5 rounded-full cursor-pointer ${
                       i === currentPage
                         ? 'bg-pagination-active'
