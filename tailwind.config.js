@@ -32,6 +32,7 @@ module.exports = {
         'content-white': '#FBFBFB',
         'pagination-active': '#444444',
         'pagination-inactive': '#C4C4C4',
+        'placeholder-gray': '#A8A3A3',
       },
       boxShadow: {
         inside: 'inset 4px 4px 20px #4D4D4D;',

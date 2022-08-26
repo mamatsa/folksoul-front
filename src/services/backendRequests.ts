@@ -1,4 +1,5 @@
 import { axiosInstance } from 'services';
+import { BandMemberInputs } from 'types';
 
 export const loginRequest = async (nickname: string, password: string) => {
   const res = await axiosInstance.post('/login', {
@@ -28,6 +29,17 @@ export const putMemberAvatarRequest = async (memberId: string, image: any) => {
       },
     }
   );
+
+  return res.data;
+};
+
+export const postBandMemberRequest = async (data: BandMemberInputs) => {
+  const res = await axiosInstance.post('/band-member', data, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
 
   return res.data;
 };

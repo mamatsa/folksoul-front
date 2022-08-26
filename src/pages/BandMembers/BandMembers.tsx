@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { DashboardWrapper } from 'components';
+import { DashboardWrapper, DashboardPageTitle } from 'components';
 import { MemberCard } from 'pages/BandMembers/components';
 import { Link } from 'react-router-dom';
 import { getBandMembersRequest } from 'services/backendRequests';
@@ -34,11 +34,8 @@ const BandMembers = () => {
   return (
     <>
       <DashboardWrapper>
+        <DashboardPageTitle title='ჯგუფის წევრები' />
         <div className=' w-full h-full flex flex-col items-center justify-evenly'>
-          <div className='w-full flex flex-col items-center gap-6'>
-            <h2 className='text-xl'>ჯგუფის წევრები</h2>
-            <div className='h-[1px] w-4/5 bg-black'></div>
-          </div>
           <div className='flex flex-wrap gap-4 justify-center px-2 2xl:gap-16'>
             {bandMembers &&
               bandMembers.map((bandMember, i) => {
@@ -75,7 +72,10 @@ const BandMembers = () => {
             </div>
           )}
 
-          <Link to='#' className='text-link-blue underline text-lg font-bold'>
+          <Link
+            to='/band-members/add-member'
+            className='text-link-blue underline text-lg font-bold'
+          >
             ახალი წევრი გვყავს?
           </Link>
         </div>

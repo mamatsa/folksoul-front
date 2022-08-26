@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Login, Dashboard, BandMembers } from 'pages';
+import { AddBandMember } from 'pages/BandMembers/components';
 
 const App = () => {
   const [token, setToken] = useState<string | null>();
@@ -21,6 +22,9 @@ const App = () => {
         <Route path='/login' element={<Login onLogin={loginHandler} />} />
         {token && <Route path='/dashboard' element={<Dashboard />} />}
         {token && <Route path='/band-members' element={<BandMembers />} />}
+        {token && (
+          <Route path='/band-members/add-member' element={<AddBandMember />} />
+        )}
       </Routes>
     </Router>
   );
