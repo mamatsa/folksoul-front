@@ -1,11 +1,13 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { DashboardWrapper, DashboardPageTitle } from 'components';
 import { BiographyTextarea, Input } from 'pages/BandMembers/components';
 import { BandMemberInputs } from 'types';
 import { postBandMemberRequest } from 'services/backendRequests';
 
 const AddBandMember = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -15,7 +17,9 @@ const AddBandMember = () => {
   const onSubmit: SubmitHandler<BandMemberInputs> = async (data) => {
     try {
       const res = await postBandMemberRequest(data);
-      console.log(res);
+      if (res.status === 'success') {
+        navigate('/band-members');
+      }
     } catch (error) {
       console.log(error);
     }
