@@ -11,7 +11,7 @@ const Input: React.FC<{
 }> = (props) => {
   const error = props.errors[props.name];
 
-  const validations: any = {
+  const validations = {
     name: {
       minLength: {
         value: 3,
@@ -61,7 +61,7 @@ const Input: React.FC<{
             value: true,
             message: 'ველი სავალდებულოა',
           },
-          ...validations[props.name],
+          ...validations[props.name as keyof typeof validations],
         })}
         type={props.type}
         id={props.id}
