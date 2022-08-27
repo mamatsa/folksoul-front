@@ -5,7 +5,8 @@ import { putMemberAvatarRequest } from 'services/backendRequests';
 const AvatarUploadModal: React.FC<{
   closeModal: (avatarAdded?: boolean) => void;
   memberId: string;
-}> = ({ closeModal, memberId }) => {
+  memberAvatarUrl: string | undefined;
+}> = ({ closeModal, memberId, memberAvatarUrl }) => {
   const [fileIsUploaded, setFileIsUploaded] = useState<boolean>(false);
   const [uploadedImage, setUploadedImage] = useState();
   const [preview, setPreview] = useState('');
@@ -54,7 +55,15 @@ const AvatarUploadModal: React.FC<{
           <div className='h-[1px] w-5/6 bg-gray-400 -mx-10'></div>
         </div>
         <div className='relative w-56 h-56 mx-52 rounded-full overflow-hidden bg-member-card-blue  border border-white flex justify-center items-center shadow-icon'>
-          {<img src={preview} alt='' className='w-full h-auto' />}
+          {fileIsUploaded && (
+            <img src={preview} alt='' className='w-full h-auto' />
+          )}
+          {!fileIsUploaded && memberAvatarUrl && (
+            <img
+              src={process.env.REACT_APP_BASE_URL + memberAvatarUrl}
+              alt='avatar'
+            />
+          )}
         </div>
 
         <form>

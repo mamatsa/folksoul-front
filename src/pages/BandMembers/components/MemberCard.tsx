@@ -80,7 +80,11 @@ const MemberCard: React.FC<{
         </Link>
       </div>
       {showAvatarEditModal && (
-        <AvatarUploadModal closeModal={closeModal} memberId={bandMember._id} />
+        <AvatarUploadModal
+          closeModal={closeModal}
+          memberId={bandMember._id}
+          memberAvatarUrl={bandMember.avatarUrl}
+        />
       )}
       {showDetailedInfoModal && (
         <DetailedInfoModal closeModal={closeModal} bandMember={bandMember} />
