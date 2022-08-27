@@ -22,7 +22,7 @@ const Textarea: React.FC<{
             message: 'ველი სავალდებულოა',
           },
           pattern: {
-            value: /^[ა-ჰ\s]*$/,
+            value: /^[ა-ჰ.:,!?"-\s]*$/,
             message: 'დაშვებულია მხოლოდ ქართული ასოები',
           },
         })}

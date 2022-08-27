@@ -6,7 +6,10 @@ import {
   DeleteButton,
   EditPhotoButton,
 } from 'components';
-import { AvatarUploadModal } from 'pages/BandMembers/components';
+import {
+  AvatarUploadModal,
+  DetailedInfoModal,
+} from 'pages/BandMembers/components';
 import { BandMember, ResponseData } from 'types';
 import { deleteBandMemberRequest } from 'services/backendRequests';
 
@@ -15,6 +18,7 @@ const MemberCard: React.FC<{
   memberChangeHandler: () => void;
 }> = ({ bandMember, memberChangeHandler }) => {
   const [showAvatarEditModal, setShowAvatarEditModal] = useState(false);
+  const [showDetailedInfoModal, setShowDetailedInfoModal] = useState(false);
 
   const closeModal = (avatarAdded?: boolean) => {
     // If avatar is changed, re-fetch band members from server in parent component
@@ -22,6 +26,7 @@ const MemberCard: React.FC<{
       memberChangeHandler();
     }
     setShowAvatarEditModal(false);
+    setShowDetailedInfoModal(false);
   };
 
   const memberDeleteHandler = async () => {
@@ -59,7 +64,12 @@ const MemberCard: React.FC<{
       </div>
       <h3 className=' text-white text-lg tracking-widest'>{bandMember.name}</h3>
       <div className='w-full flex justify-between border border-black px-5 py-2'>
-        <Link to='#'>
+        <Link
+          to='#'
+          onClick={() => {
+            setShowDetailedInfoModal(true);
+          }}
+        >
           <ViewButton />
         </Link>
         <Link to={'/band-members/update-member/' + bandMember._id}>
@@ -71,6 +81,9 @@ const MemberCard: React.FC<{
       </div>
       {showAvatarEditModal && (
         <AvatarUploadModal closeModal={closeModal} memberId={bandMember._id} />
+      )}
+      {showDetailedInfoModal && (
+        <DetailedInfoModal closeModal={closeModal} bandMember={bandMember} />
       )}
     </div>
   );
