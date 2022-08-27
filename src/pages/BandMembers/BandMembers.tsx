@@ -12,6 +12,11 @@ const BandMembers = () => {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [memberChanged, setMemberChanged] = useState<number>(0);
 
+  // After deleting the last member on a page reduce currentPage
+  if (currentPage > 0 && currentPage >= numberOfPages) {
+    setCurrentPage(numberOfPages - 1);
+  }
+
   useEffect(() => {
     const getBandMembers = async () => {
       try {
@@ -51,6 +56,9 @@ const BandMembers = () => {
                   return null;
                 }
               })}
+            {!bandMembers?.length && (
+              <h3 className='text-lg'>ამ ეტაპზე ბენდი უწევროდაა</h3>
+            )}
           </div>
           {showPagination && (
             <div className='flex gap-5'>
