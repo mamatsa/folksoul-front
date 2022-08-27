@@ -6,7 +6,7 @@ const AvatarUploadModal: React.FC<{
   closeModal: (avatarAdded?: boolean) => void;
   memberId: string;
   memberAvatarUrl: string | undefined;
-}> = ({ closeModal, memberId, memberAvatarUrl }) => {
+}> = (props) => {
   const [uploadedImage, setUploadedImage] = useState<File>();
   const [preview, setPreview] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -51,11 +51,11 @@ const AvatarUploadModal: React.FC<{
   // Send backend request
   const acceptUpload = async () => {
     try {
-      await putMemberAvatarRequest(memberId, uploadedImage);
+      await putMemberAvatarRequest(props.memberId, uploadedImage);
     } catch (e) {
       setErrorMessage('დაფიქსირდა შეცდომა სერვერზე');
     }
-    closeModal(true);
+    props.closeModal(true);
   };
 
   return (
@@ -64,7 +64,7 @@ const AvatarUploadModal: React.FC<{
         <div
           className='absolute top-4 right-4 cursor-pointer'
           onClick={() => {
-            closeModal();
+            props.closeModal();
           }}
         >
           <ExitButton />
@@ -82,9 +82,9 @@ const AvatarUploadModal: React.FC<{
             {uploadedImage && (
               <img src={preview} alt='' className='w-full h-auto' />
             )}
-            {!uploadedImage && memberAvatarUrl && (
+            {!uploadedImage && props.memberAvatarUrl && (
               <img
-                src={process.env.REACT_APP_BASE_URL + memberAvatarUrl}
+                src={process.env.REACT_APP_BASE_URL + props.memberAvatarUrl}
                 alt='avatar'
               />
             )}

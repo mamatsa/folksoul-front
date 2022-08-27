@@ -6,22 +6,22 @@ const NavItem: React.FC<{
   text: string;
   destination: string;
   logoutHandler?: () => void;
-}> = ({ Icon, text, destination, logoutHandler }) => {
+}> = (props) => {
   return (
     <NavLink
-      to={destination}
+      to={props.destination}
       className={({ isActive }) =>
         isActive
           ? 'w-full pl-2 pr-2 bg-white text-black md:pl-4 md:pr-8'
           : 'w-full pl-2 pr-2 text-white md:pl-4 md:pr-8'
       }
-      onClick={logoutHandler}
+      onClick={props.logoutHandler}
     >
       <li className='flex py-2 items-center text-sm whitespace-nowrap md:text-lg'>
         <div className='w-9 flex justify-start'>
-          <Icon />
+          <props.Icon />
         </div>
-        <span className='mt-[5px]'>{text}</span>
+        <span className='mt-[5px]'>{props.text}</span>
       </li>
     </NavLink>
   );

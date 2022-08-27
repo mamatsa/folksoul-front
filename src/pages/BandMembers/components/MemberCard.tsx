@@ -16,14 +16,14 @@ import { deleteBandMemberRequest } from 'services';
 const MemberCard: React.FC<{
   bandMember: BandMember;
   memberChangeHandler: () => void;
-}> = ({ bandMember, memberChangeHandler }) => {
+}> = (props) => {
   const [showAvatarEditModal, setShowAvatarEditModal] = useState(false);
   const [showDetailedInfoModal, setShowDetailedInfoModal] = useState(false);
 
   const closeModal = (avatarAdded?: boolean) => {
     // If avatar is changed, re-fetch band members from server in parent component
     if (avatarAdded) {
-      memberChangeHandler();
+      props.memberChangeHandler();
     }
     setShowAvatarEditModal(false);
     setShowDetailedInfoModal(false);
@@ -31,9 +31,11 @@ const MemberCard: React.FC<{
 
   const memberDeleteHandler = async () => {
     try {
-      const res: ResponseData = await deleteBandMemberRequest(bandMember._id);
+      const res: ResponseData = await deleteBandMemberRequest(
+        props.bandMember._id
+      );
       if (res.status === 'success') {
-        memberChangeHandler();
+        props.memberChangeHandler();
       }
     } catch (error) {
       // error
@@ -43,10 +45,10 @@ const MemberCard: React.FC<{
   return (
     <div className='pt-4 flex flex-col justify-between items-center gap-3 bg-dashboard-dark border border-black rounded-[3px] shadow-card lg:gap-6 lg:pt-8'>
       <div className='relative w-28 h-28 mx-5 rounded-full bg-member-card-blue border border-white flex justify-center items-center lg:w-36 lg:h-36 lg:mx-9'>
-        {bandMember.avatarUrl && (
+        {props.bandMember.avatarUrl && (
           <div className='w-full h-full rounded-full flex items-center justify-center overflow-hidden'>
             <img
-              src={process.env.REACT_APP_BASE_URL + bandMember.avatarUrl}
+              src={process.env.REACT_APP_BASE_URL + props.bandMember.avatarUrl}
               alt='ავატარი'
               className='w-full h-auto'
             />
@@ -62,7 +64,9 @@ const MemberCard: React.FC<{
           <EditPhotoButton />
         </Link>
       </div>
-      <h3 className=' text-white text-lg tracking-widest'>{bandMember.name}</h3>
+      <h3 className=' text-white text-lg tracking-widest'>
+        {props.bandMember.name}
+      </h3>
       <div className='w-full flex justify-between border border-black px-5 py-2'>
         <Link
           to='#'
@@ -72,7 +76,7 @@ const MemberCard: React.FC<{
         >
           <ViewButton />
         </Link>
-        <Link to={'/band-members/update-member/' + bandMember._id}>
+        <Link to={'/band-members/update-member/' + props.bandMember._id}>
           <ModifyButton />
         </Link>
         <Link to='#' onClick={memberDeleteHandler}>
@@ -82,12 +86,15 @@ const MemberCard: React.FC<{
       {showAvatarEditModal && (
         <AvatarUploadModal
           closeModal={closeModal}
-          memberId={bandMember._id}
-          memberAvatarUrl={bandMember.avatarUrl}
+          memberId={props.bandMember._id}
+          memberAvatarUrl={props.bandMember.avatarUrl}
         />
       )}
       {showDetailedInfoModal && (
-        <DetailedInfoModal closeModal={closeModal} bandMember={bandMember} />
+        <DetailedInfoModal
+          closeModal={closeModal}
+          bandMember={props.bandMember}
+        />
       )}
     </div>
   );
