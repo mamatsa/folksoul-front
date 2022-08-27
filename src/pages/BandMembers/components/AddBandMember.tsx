@@ -7,7 +7,7 @@ import {
   postBandMemberRequest,
   getBandMemberRequest,
   putBandMemberRequest,
-} from 'services/backendRequests';
+} from 'services';
 import { useEffect } from 'react';
 
 const AddBandMember = () => {

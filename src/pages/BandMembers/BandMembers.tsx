@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { DashboardWrapper, DashboardPageTitle } from 'components';
 import { MemberCard } from 'pages/BandMembers/components';
 import { Link } from 'react-router-dom';
-import { getBandMembersRequest } from 'services/backendRequests';
+import { getBandMembersRequest } from 'services';
 import { BandMember } from 'types';
 
 const BandMembers = () => {

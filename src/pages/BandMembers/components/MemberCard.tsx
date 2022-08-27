@@ -11,7 +11,7 @@ import {
   DetailedInfoModal,
 } from 'pages/BandMembers/components';
 import { BandMember, ResponseData } from 'types';
-import { deleteBandMemberRequest } from 'services/backendRequests';
+import { deleteBandMemberRequest } from 'services';
 
 const MemberCard: React.FC<{
   bandMember: BandMember;

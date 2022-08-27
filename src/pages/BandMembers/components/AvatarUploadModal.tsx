@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ExitButton } from 'components';
-import { putMemberAvatarRequest } from 'services/backendRequests';
+import { putMemberAvatarRequest } from 'services';
 
 const AvatarUploadModal: React.FC<{
   closeModal: (avatarAdded?: boolean) => void;
