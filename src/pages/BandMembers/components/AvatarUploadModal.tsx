@@ -61,7 +61,14 @@ const AvatarUploadModal: React.FC<{
   return (
     <div className='absolute top-0 left-0 w-screen h-screen bg-modal-bg bg-opacity-95 flex justify-center items-center z-10'>
       <div className='relative bg-white py-20 rounded-lg flex flex-col items-center justify-between gap-20'>
-        <ExitButton closeHandler={closeModal} />
+        <div
+          className='absolute top-4 right-4 cursor-pointer'
+          onClick={() => {
+            closeModal();
+          }}
+        >
+          <ExitButton />
+        </div>
         <div className='w-full flex flex-col justify-center items-center'>
           <h2 className='text-lg mb-2'>შეცვალე ჯგუფის წევრის ავატარი</h2>
           <div className='h-[1px] w-5/6 bg-gray-400 -mx-10'></div>
