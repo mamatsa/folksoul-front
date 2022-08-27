@@ -50,7 +50,7 @@ const MemberCard: React.FC<{
         <Link to='#'>
           <ViewButton />
         </Link>
-        <Link to='#'>
+        <Link to={'/band-members/update-member/' + bandMember._id}>
           <ModifyButton />
         </Link>
         <Link to='#'>

@@ -16,6 +16,12 @@ export const getBandMembersRequest = async () => {
   return res.data;
 };
 
+export const getBandMemberRequest = async (id: string) => {
+  const res = await axiosInstance.get('/band-member/' + id);
+
+  return res.data;
+};
+
 export const putMemberAvatarRequest = async (memberId: string, image: any) => {
   const formData = new FormData();
   formData.append('image', image);
@@ -35,6 +41,20 @@ export const putMemberAvatarRequest = async (memberId: string, image: any) => {
 
 export const postBandMemberRequest = async (data: BandMemberInputs) => {
   const res = await axiosInstance.post('/band-member', data, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
+
+  return res.data;
+};
+
+export const putBandMemberRequest = async (
+  id: string,
+  data: BandMemberInputs
+) => {
+  const res = await axiosInstance.put('/band-member/' + id, data, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,

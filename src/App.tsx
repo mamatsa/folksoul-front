@@ -25,6 +25,12 @@ const App = () => {
         {token && (
           <Route path='/band-members/add-member' element={<AddBandMember />} />
         )}
+        {token && (
+          <Route
+            path='/band-members/update-member/:memberId'
+            element={<AddBandMember />}
+          />
+        )}
       </Routes>
     </Router>
   );
