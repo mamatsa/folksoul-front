@@ -17,13 +17,13 @@ const DetailedInfoModal: React.FC<{
         </div>
         <div className=' w-[95%] flex flex-col items-center overflow-y-scroll overflow-x-hidden scrollbar-thin scrollbar-track-scrollbar-blue scrollbar-thumb-primary-dark-blue scrollbar-thumb-rounded scrollbar-track-rounded'>
           <div className='relative w-32 h-32 min-h-[128px] mx-52 mt-9 rounded-full overflow-hidden bg-member-card-blue  border border-white flex justify-center items-center shadow-modal-avatar'>
-            {
+            {bandMember.avatarUrl && (
               <img
                 src={process.env.REACT_APP_BASE_URL! + bandMember.avatarUrl}
                 alt='Band Member'
                 className='w-full h-auto'
               />
-            }
+            )}
           </div>
           <h6 className=' text-sm my-4'>
             ორბიტალური დაშორება:

@@ -7,20 +7,33 @@ const AvatarUploadModal: React.FC<{
   memberId: string;
   memberAvatarUrl: string | undefined;
 }> = ({ closeModal, memberId, memberAvatarUrl }) => {
-  const [fileIsUploaded, setFileIsUploaded] = useState<boolean>(false);
-  const [uploadedImage, setUploadedImage] = useState();
+  const [uploadedImage, setUploadedImage] = useState<File>();
   const [preview, setPreview] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const hiddenInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    // create the preview
-    if (fileIsUploaded) {
+    if (uploadedImage) {
+      if (
+        uploadedImage.type !== 'image/png' &&
+        uploadedImage.type !== 'image/jpg' &&
+        uploadedImage.type !== 'image/jpeg' &&
+        uploadedImage.type !== 'image/svg+xml'
+      ) {
+        setErrorMessage('სურათი უნდა იყოს PNG, JPG, JPEG ან SVG ფორმატში');
+      } else if (uploadedImage.size > 3145728) {
+        setErrorMessage('სურათი უნდა იყოს 2 მეგაბაიტზე მცირე ზომის');
+      } else {
+        setErrorMessage('');
+      }
+
+      // create image preview
       const objectUrl = URL.createObjectURL(uploadedImage!);
       setPreview(objectUrl);
       // free memory when ever this component is unmounted
       return () => URL.revokeObjectURL(objectUrl);
     }
-  }, [uploadedImage, fileIsUploaded]);
+  }, [uploadedImage]);
 
   // Redirect button click to hidden fle input
   const uploadFileHandler = () => {
@@ -31,7 +44,6 @@ const AvatarUploadModal: React.FC<{
   const handleFileInputChange = (event: any) => {
     const uploadedFile = event.target.files[0];
     if (uploadedFile) {
-      setFileIsUploaded(true);
       setUploadedImage(uploadedFile);
     }
   };
@@ -41,7 +53,7 @@ const AvatarUploadModal: React.FC<{
     try {
       await putMemberAvatarRequest(memberId, uploadedImage);
     } catch (e) {
-      console.log(e);
+      setErrorMessage('დაფიქსირდა შეცდომა სერვერზე');
     }
     closeModal(true);
   };
@@ -54,18 +66,25 @@ const AvatarUploadModal: React.FC<{
           <h2 className='text-lg mb-2'>შეცვალე ჯგუფის წევრის ავატარი</h2>
           <div className='h-[1px] w-5/6 bg-gray-400 -mx-10'></div>
         </div>
-        <div className='relative w-56 h-56 mx-52 rounded-full overflow-hidden bg-member-card-blue  border border-white flex justify-center items-center shadow-icon'>
-          {fileIsUploaded && (
-            <img src={preview} alt='' className='w-full h-auto' />
-          )}
-          {!fileIsUploaded && memberAvatarUrl && (
-            <img
-              src={process.env.REACT_APP_BASE_URL + memberAvatarUrl}
-              alt='avatar'
-            />
-          )}
-        </div>
+        <div className='flex flex-col justify-center items-center'>
+          <div
+            className={`relative w-56 h-56 mx-52 rounded-full overflow-hidden bg-member-card-blue  border flex justify-center items-center shadow-icon ${
+              errorMessage ? 'border-error-red' : 'border-white'
+            }`}
+          >
+            {uploadedImage && (
+              <img src={preview} alt='' className='w-full h-auto' />
+            )}
+            {!uploadedImage && memberAvatarUrl && (
+              <img
+                src={process.env.REACT_APP_BASE_URL + memberAvatarUrl}
+                alt='avatar'
+              />
+            )}
+          </div>
 
+          <h4 className=' text-error-red mt-6'>{errorMessage}</h4>
+        </div>
         <form>
           <input
             ref={hiddenInput}
@@ -77,7 +96,7 @@ const AvatarUploadModal: React.FC<{
           />
         </form>
 
-        {fileIsUploaded ? (
+        {uploadedImage && !errorMessage ? (
           <button
             type='submit'
             className='button bg-button-green text-content-white rounded-lg text-lg px-6 pt-2 pb-1 tracking-wide'
