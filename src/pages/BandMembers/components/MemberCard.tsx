@@ -7,7 +7,8 @@ import {
   EditPhotoButton,
 } from 'components';
 import { AvatarUploadModal } from 'pages/BandMembers/components';
-import { BandMember } from 'types';
+import { BandMember, ResponseData } from 'types';
+import { deleteBandMemberRequest } from 'services/backendRequests';
 
 const MemberCard: React.FC<{
   bandMember: BandMember;
@@ -21,6 +22,17 @@ const MemberCard: React.FC<{
       memberChangeHandler();
     }
     setShowAvatarEditModal(false);
+  };
+
+  const memberDeleteHandler = async () => {
+    try {
+      const res: ResponseData = await deleteBandMemberRequest(bandMember._id);
+      if (res.status === 'success') {
+        memberChangeHandler();
+      }
+    } catch (error) {
+      // error
+    }
   };
 
   return (
@@ -53,7 +65,7 @@ const MemberCard: React.FC<{
         <Link to={'/band-members/update-member/' + bandMember._id}>
           <ModifyButton />
         </Link>
-        <Link to='#'>
+        <Link to='#' onClick={memberDeleteHandler}>
           <DeleteButton />
         </Link>
       </div>

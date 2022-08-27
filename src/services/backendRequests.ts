@@ -63,3 +63,14 @@ export const putBandMemberRequest = async (
 
   return res.data;
 };
+
+export const deleteBandMemberRequest = async (id: string) => {
+  const res = await axiosInstance.delete('/band-member/' + id, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
+
+  return res.data;
+};
