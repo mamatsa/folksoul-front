@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LoginWrapper: React.FC<{ children: JSX.Element }> = ({ children }) => (
+const LoginWrapper: React.FC<{ children: JSX.Element }> = (props) => (
   <div className='flex items-center justify-center h-screen'>
     <div className='w-full flex flex-col justify-between gap-12 border-y border-white px-2 py-16  bg-login-gradient xs:w-auto xs:px-12 xs:border xs:rounded-sm'>
       <div className=' w-min mx-auto text-white bg-red-bg pt-6 pb-4 px-10 shadow-xl -skew-x-[24deg]'>
@@ -8,7 +8,7 @@ const LoginWrapper: React.FC<{ children: JSX.Element }> = ({ children }) => (
           კარიბჭე
         </h1>
       </div>
-      {children}
+      {props.children}
     </div>
   </div>
 );

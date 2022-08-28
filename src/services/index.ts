@@ -1,2 +1,10 @@
 export { default as axiosInstance } from './axiosInstance';
-export { loginRequest } from './backendRequests';
+export {
+  loginRequest,
+  getBandMembersRequest,
+  getBandMemberRequest,
+  postBandMemberRequest,
+  putBandMemberRequest,
+  putMemberAvatarRequest,
+  deleteBandMemberRequest,
+} from './backendRequests';
