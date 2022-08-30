@@ -20,6 +20,7 @@ const AddBandMember = () => {
     register,
     handleSubmit,
     setValue,
+    getValues,
     formState: { errors },
   } = useForm<BandMemberInputs>();
 
@@ -43,8 +44,38 @@ const AddBandMember = () => {
     };
     if (memberId) {
       getBandMember();
+    } else {
+      // Remove saved values if backend request is already sent
+      if (localStorage.getItem('alreadyAdded') === 'true') {
+        localStorage.removeItem('alreadyAdded');
+        localStorage.removeItem('name');
+        localStorage.removeItem('instrument');
+        localStorage.removeItem('orbitWidth');
+        localStorage.removeItem('color');
+        localStorage.removeItem('bio');
+      } else {
+        // Set saved values to inputs
+        setValue('name', localStorage.getItem('bandMemberName') || '');
+        setValue('instrument', localStorage.getItem('instrument') || '');
+        setValue('color', localStorage.getItem('color') || '');
+        setValue('bio', localStorage.getItem('bio') || '');
+        if (
+          localStorage.getItem('orbitWidth') &&
+          Number(localStorage.getItem('orbitWidth'))
+        ) {
+          setValue('orbitWidth', Number(localStorage.getItem('orbitWidth')));
+        }
+      }
+      // Save values on unmount
+      return () => {
+        localStorage.setItem('bandMemberName', getValues('name') || '');
+        localStorage.setItem('instrument', getValues('instrument'));
+        localStorage.setItem('orbitWidth', getValues('orbitWidth').toString());
+        localStorage.setItem('color', getValues('color'));
+        localStorage.setItem('bio', getValues('bio'));
+      };
     }
-  }, [memberId, setValue]);
+  }, [memberId, setValue, getValues]);
 
   const onSubmit: SubmitHandler<BandMemberInputs> = async (data) => {
     try {
@@ -53,6 +84,7 @@ const AddBandMember = () => {
         res = await putBandMemberRequest(memberId, data);
       } else {
         res = await postBandMemberRequest(data);
+        localStorage.setItem('alreadyAdded', 'true');
       }
       if (res.status === 'success') {
         navigate('/band-members');

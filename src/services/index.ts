@@ -7,4 +7,10 @@ export {
   putBandMemberRequest,
   putMemberAvatarRequest,
   deleteBandMemberRequest,
+  getSocialLinksRequest,
+  putSocialLinkIconRequest,
+  deleteSocialLinkRequest,
+  getSocialLinkRequest,
+  postSocialLinkRequest,
+  putSocialLinkRequest,
 } from './backendRequests';
