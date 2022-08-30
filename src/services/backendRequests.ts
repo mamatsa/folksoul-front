@@ -10,6 +10,8 @@ export const loginRequest = async (nickname: string, password: string) => {
   return res.data;
 };
 
+// Band member requests
+
 export const getBandMembersRequest = async () => {
   const res = await axiosInstance.get('/band-members');
 
@@ -71,6 +73,14 @@ export const deleteBandMemberRequest = async (id: string) => {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
   });
+
+  return res.data;
+};
+
+// Social link requests
+
+export const getSocialLinksRequest = async () => {
+  const res = await axiosInstance.get('/social-links');
 
   return res.data;
 };

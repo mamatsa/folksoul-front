@@ -75,7 +75,7 @@ const AvatarUploadModal: React.FC<{
         </div>
         <div className='flex flex-col justify-center items-center'>
           <div
-            className={`relative w-56 h-56 mx-52 rounded-full overflow-hidden bg-member-card-blue  border flex justify-center items-center shadow-icon ${
+            className={`relative w-56 h-56 mx-52 rounded-full overflow-hidden bg-member-card-blue  border flex justify-center items-center shadow-small ${
               errorMessage ? 'border-error-red' : 'border-white'
             }`}
           >

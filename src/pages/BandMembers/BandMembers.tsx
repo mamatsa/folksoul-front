@@ -79,14 +79,13 @@ const BandMembers = () => {
               })}
             </div>
           )}
-
-          <Link
-            to='/band-members/add-member'
-            className='text-link-blue underline text-lg font-bold'
-          >
-            ახალი წევრი გვყავს?
-          </Link>
         </div>
+        <Link
+          to='/band-members/add-member'
+          className='text-link-blue underline text-lg font-bold mb-20'
+        >
+          ახალი წევრი გვყავს?
+        </Link>
       </DashboardWrapper>
     </>
   );

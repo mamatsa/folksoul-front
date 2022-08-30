@@ -35,11 +35,12 @@ module.exports = {
         'placeholder-gray': '#A8A3A3',
         'primary-dark-blue': '#143B52',
         'scrollbar-blue': '#87AEC5',
+        'social-link-blue': '#2F80ED',
       },
       boxShadow: {
         inside: 'inset 4px 4px 20px #4D4D4D;',
         card: '5px 5px 13px rgba(0, 0, 0, 0.63);',
-        icon: '2px 4px 14px #000000;',
+        small: '2px 4px 14px #000000;',
         'modal-avatar': '1.11504px 2.23009px 7.80531px #000000;',
       },
     },
