@@ -39,26 +39,28 @@ const SocialLinkCard: React.FC<{
   };
 
   return (
-    <div className='w-3/4 bg-dashboard-dark flex justify-between items-center px-7 py-4 rounded-[5px] shadow-small'>
-      <div className='relative h-9 w-14 flex items-center justify-center overflow-hidden'>
-        {props.socialLink.iconUrl && (
-          <img
-            src={process.env.REACT_APP_BASE_URL + props.socialLink.iconUrl}
-            alt='icon'
-            className='h-full w-auto'
-          />
-        )}
-        <Link
-          to='#'
-          className='absolute bottom-0 right-0 h-5 w-5'
-          onClick={() => {
-            setShowAvatarEditModal(true);
-          }}
-        >
-          <EditPhotoButton />
-        </Link>
+    <div className='w-3/4 bg-dashboard-dark flex justify-between items-center px-7 py-4 rounded-[5px] shadow-small 2xl:w-2/3'>
+      <div className='flex items-center gap-4 xl:gap-14'>
+        <div className='relative h-9 w-14 flex items-center justify-center overflow-hidden'>
+          {props.socialLink.iconUrl && (
+            <img
+              src={process.env.REACT_APP_BASE_URL + props.socialLink.iconUrl}
+              alt='icon'
+              className='h-full w-auto'
+            />
+          )}
+          <Link
+            to='#'
+            className='absolute bottom-0 right-0 h-5 w-5'
+            onClick={() => {
+              setShowAvatarEditModal(true);
+            }}
+          >
+            <EditPhotoButton />
+          </Link>
+        </div>
+        <h3 className='text-lg text-white'>{props.socialLink.name}</h3>
       </div>
-      <h3 className='text-lg text-white'>{props.socialLink.name}</h3>
       <a
         href={props.socialLink.link}
         className='text-social-link-blue underline'
