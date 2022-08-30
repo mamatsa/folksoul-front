@@ -20,6 +20,7 @@ const AddSocialLink = () => {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors },
   } = useForm<SocialLinkInputs>();
 
@@ -40,8 +41,24 @@ const AddSocialLink = () => {
     };
     if (socialLinkId) {
       getSocialLink();
+    } else {
+      // Remove saved values if backend request is already sent
+      if (localStorage.getItem('alreadyAdded') === 'true') {
+        localStorage.removeItem('name');
+        localStorage.removeItem('link');
+        localStorage.removeItem('alreadyAdded');
+      } else {
+        // Set saved values to inputs
+        setValue('name', localStorage.getItem('socialLinkName') || '');
+        setValue('link', localStorage.getItem('link') || '');
+      }
+      // Save values on unmount
+      return () => {
+        localStorage.setItem('socialLinkName', watch('name'));
+        localStorage.setItem('link', watch('link'));
+      };
     }
-  }, [socialLinkId, setValue]);
+  }, [socialLinkId, setValue, watch]);
 
   const onSubmit: SubmitHandler<SocialLinkInputs> = async (data) => {
     try {
@@ -50,6 +67,7 @@ const AddSocialLink = () => {
         res = await putSocialLinkRequest(socialLinkId, data);
       } else {
         res = await postSocialLinkRequest(data);
+        localStorage.setItem('alreadyAdded', 'true');
       }
       if (res.status === 'success') {
         navigate('/social-links');
