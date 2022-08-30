@@ -42,7 +42,10 @@ const SocialLinks = () => {
             );
           })}
       </div>
-      <Link to='#' className='text-link-blue underline text-lg font-bold mb-20'>
+      <Link
+        to='/social-links/add-social-link'
+        className='text-link-blue underline text-lg font-bold mb-20'
+      >
         დაამატე სოციალური ბმული
       </Link>
     </DashboardWrapper>

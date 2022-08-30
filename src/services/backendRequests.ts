@@ -1,5 +1,5 @@
 import { axiosInstance } from 'services';
-import { BandMemberInputs } from 'types';
+import { BandMemberInputs, SocialLinkInputs } from 'types';
 
 export const loginRequest = async (nickname: string, password: string) => {
   const res = await axiosInstance.post('/login', {
@@ -81,6 +81,37 @@ export const deleteBandMemberRequest = async (id: string) => {
 
 export const getSocialLinksRequest = async () => {
   const res = await axiosInstance.get('/social-links');
+
+  return res.data;
+};
+
+export const getSocialLinkRequest = async (id: string) => {
+  const res = await axiosInstance.get('/social-link/' + id);
+
+  return res.data;
+};
+
+export const postSocialLinkRequest = async (data: SocialLinkInputs) => {
+  const res = await axiosInstance.post('/social-link', data, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
+
+  return res.data;
+};
+
+export const putSocialLinkRequest = async (
+  id: string,
+  data: SocialLinkInputs
+) => {
+  const res = await axiosInstance.put('/social-link/' + id, data, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
 
   return res.data;
 };

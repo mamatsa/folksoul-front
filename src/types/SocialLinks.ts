@@ -4,3 +4,8 @@ export type SocialLink = {
   link: string;
   iconUrl?: string;
 };
+
+export type SocialLinkInputs = {
+  name: string;
+  link: string;
+};

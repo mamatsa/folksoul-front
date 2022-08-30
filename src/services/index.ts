@@ -10,4 +10,7 @@ export {
   getSocialLinksRequest,
   putSocialLinkIconRequest,
   deleteSocialLinkRequest,
+  getSocialLinkRequest,
+  postSocialLinkRequest,
+  putSocialLinkRequest,
 } from './backendRequests';

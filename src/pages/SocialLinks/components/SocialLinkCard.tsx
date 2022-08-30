@@ -68,7 +68,7 @@ const SocialLinkCard: React.FC<{
         {props.socialLink.link}
       </a>
       <div className='flex gap-4 xl:gap-16'>
-        <Link to='#'>
+        <Link to={'/social-links/update-social-link/' + props.socialLink._id}>
           <ModifyButton />
         </Link>
         <Link to='#' onClick={socialLinkDeleteHandler}>

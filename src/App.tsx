@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Login, Dashboard, BandMembers, SocialLinks } from 'pages';
 import { AddBandMember } from 'pages/BandMembers/components';
+import { AddSocialLink } from 'pages/SocialLinks/components';
 
 const App = () => {
   const [token, setToken] = useState<string | null>();
@@ -32,6 +33,18 @@ const App = () => {
           />
         )}
         {token && <Route path='/social-links' element={<SocialLinks />} />}
+        {token && (
+          <Route
+            path='/social-links/add-social-link'
+            element={<AddSocialLink />}
+          />
+        )}
+        {token && (
+          <Route
+            path='/social-links/update-social-link/:socialLinkId'
+            element={<AddSocialLink />}
+          />
+        )}
       </Routes>
     </Router>
   );
