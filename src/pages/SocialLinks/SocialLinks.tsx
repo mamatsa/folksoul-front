@@ -7,6 +7,8 @@ import { SocialLinkCard } from 'pages/SocialLinks/components';
 
 const SocialLinks = () => {
   const [socialLinks, setSocialLinks] = useState<SocialLink[]>();
+  const [socialLinkChanged, setSocialLinkChanged] = useState(0);
+
   useEffect(() => {
     const getSocialLinks = async () => {
       try {
@@ -17,7 +19,13 @@ const SocialLinks = () => {
       }
     };
     getSocialLinks();
-  }, []);
+  }, [socialLinkChanged]);
+
+  const socialLinkChangeHandler = () => {
+    setSocialLinkChanged((prevState) => {
+      return prevState + 1;
+    });
+  };
 
   return (
     <DashboardWrapper>
@@ -25,7 +33,13 @@ const SocialLinks = () => {
       <div className=' w-full h-full flex flex-col items-center gap-12 py-16'>
         {socialLinks &&
           socialLinks.map((socialLink, i) => {
-            return <SocialLinkCard socialLink={socialLink} key={i} />;
+            return (
+              <SocialLinkCard
+                socialLink={socialLink}
+                key={i}
+                socialLinkChangeHandler={socialLinkChangeHandler}
+              />
+            );
           })}
       </div>
       <Link to='#' className='text-link-blue underline text-lg font-bold mb-20'>

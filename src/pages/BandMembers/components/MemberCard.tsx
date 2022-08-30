@@ -5,13 +5,12 @@ import {
   ModifyButton,
   DeleteButton,
   EditPhotoButton,
+  ImageUploadModal,
 } from 'components';
-import {
-  AvatarUploadModal,
-  DetailedInfoModal,
-} from 'pages/BandMembers/components';
+import { DetailedInfoModal } from 'pages/BandMembers/components';
 import { BandMember, ResponseData } from 'types';
 import { deleteBandMemberRequest } from 'services';
+import { putMemberAvatarRequest } from 'services';
 
 const MemberCard: React.FC<{
   bandMember: BandMember;
@@ -20,13 +19,19 @@ const MemberCard: React.FC<{
   const [showAvatarEditModal, setShowAvatarEditModal] = useState(false);
   const [showDetailedInfoModal, setShowDetailedInfoModal] = useState(false);
 
-  const closeModal = (avatarAdded?: boolean) => {
-    // If avatar is changed, re-fetch band members from server in parent component
-    if (avatarAdded) {
-      props.memberChangeHandler();
-    }
+  const closeModal = () => {
     setShowAvatarEditModal(false);
     setShowDetailedInfoModal(false);
+  };
+
+  const imageUploadHandler = async (image?: File) => {
+    try {
+      await putMemberAvatarRequest(props.bandMember._id, image);
+    } catch (e) {
+      //
+    }
+    closeModal();
+    props.memberChangeHandler();
   };
 
   const memberDeleteHandler = async () => {
@@ -84,10 +89,11 @@ const MemberCard: React.FC<{
         </Link>
       </div>
       {showAvatarEditModal && (
-        <AvatarUploadModal
+        <ImageUploadModal
+          title='შეცვალე ჯგუფის წევრის ავატარი'
           closeModal={closeModal}
-          memberId={props.bandMember._id}
-          memberAvatarUrl={props.bandMember.avatarUrl}
+          imageUploadHandler={imageUploadHandler}
+          imageUrl={props.bandMember.avatarUrl}
         />
       )}
       {showDetailedInfoModal && (

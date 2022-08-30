@@ -84,3 +84,23 @@ export const getSocialLinksRequest = async () => {
 
   return res.data;
 };
+
+export const putSocialLinkIconRequest = async (
+  socialLinkId: string,
+  image: any
+) => {
+  const formData = new FormData();
+  formData.append('image', image);
+  const res = await axiosInstance.put(
+    `/social-link/icon/${socialLinkId}`,
+    formData,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    }
+  );
+
+  return res.data;
+};

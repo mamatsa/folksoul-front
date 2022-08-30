@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ExitButton } from 'components';
-import { putMemberAvatarRequest } from 'services';
 
-const AvatarUploadModal: React.FC<{
-  closeModal: (avatarAdded?: boolean) => void;
-  memberId: string;
-  memberAvatarUrl: string | undefined;
+const ImageUploadModal: React.FC<{
+  closeModal: () => void;
+  imageUploadHandler: (image?: File) => void;
+  imageUrl: string | undefined;
+  title: string;
 }> = (props) => {
   const [uploadedImage, setUploadedImage] = useState<File>();
   const [preview, setPreview] = useState('');
@@ -49,13 +49,8 @@ const AvatarUploadModal: React.FC<{
   };
 
   // Send backend request
-  const acceptUpload = async () => {
-    try {
-      await putMemberAvatarRequest(props.memberId, uploadedImage);
-    } catch (e) {
-      setErrorMessage('დაფიქსირდა შეცდომა სერვერზე');
-    }
-    props.closeModal(true);
+  const acceptUpload = () => {
+    props.imageUploadHandler(uploadedImage);
   };
 
   return (
@@ -70,7 +65,7 @@ const AvatarUploadModal: React.FC<{
           <ExitButton />
         </div>
         <div className='w-full flex flex-col justify-center items-center'>
-          <h2 className='text-lg mb-2'>შეცვალე ჯგუფის წევრის ავატარი</h2>
+          <h2 className='text-lg mb-2'>{props.title}</h2>
           <div className='h-[1px] w-5/6 bg-gray-400 -mx-10'></div>
         </div>
         <div className='flex flex-col justify-center items-center'>
@@ -82,9 +77,9 @@ const AvatarUploadModal: React.FC<{
             {uploadedImage && (
               <img src={preview} alt='' className='w-full h-auto' />
             )}
-            {!uploadedImage && props.memberAvatarUrl && (
+            {!uploadedImage && props.imageUrl && (
               <img
-                src={process.env.REACT_APP_BASE_URL + props.memberAvatarUrl}
+                src={process.env.REACT_APP_BASE_URL + props.imageUrl}
                 alt='avatar'
               />
             )}
@@ -125,4 +120,4 @@ const AvatarUploadModal: React.FC<{
   );
 };
 
-export default AvatarUploadModal;
+export default ImageUploadModal;

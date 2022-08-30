@@ -8,4 +8,5 @@ export {
   putMemberAvatarRequest,
   deleteBandMemberRequest,
   getSocialLinksRequest,
+  putSocialLinkIconRequest,
 } from './backendRequests';
