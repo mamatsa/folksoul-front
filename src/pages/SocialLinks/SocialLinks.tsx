@@ -30,7 +30,11 @@ const SocialLinks = () => {
   return (
     <DashboardWrapper>
       <DashboardPageTitle title='სოციალური ბმულები' />
-      <div className=' w-full h-full flex flex-col items-center gap-12 py-16'>
+      <div
+        className={` w-full h-full flex flex-col items-center gap-12 py-16 ${
+          !socialLinks?.length && 'justify-center'
+        }`}
+      >
         {socialLinks &&
           socialLinks.map((socialLink, i) => {
             return (
@@ -41,6 +45,9 @@ const SocialLinks = () => {
               />
             );
           })}
+        {!socialLinks?.length && (
+          <h3 className='text-lg'>ამ ეტაპზე სოციალური ბმულები არ გვაქვს</h3>
+        )}
       </div>
       <Link
         to='/social-links/add-social-link'
