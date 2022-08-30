@@ -20,7 +20,7 @@ const AddSocialLink = () => {
     register,
     handleSubmit,
     setValue,
-    watch,
+    getValues,
     formState: { errors },
   } = useForm<SocialLinkInputs>();
 
@@ -54,11 +54,11 @@ const AddSocialLink = () => {
       }
       // Save values on unmount
       return () => {
-        localStorage.setItem('socialLinkName', watch('name'));
-        localStorage.setItem('link', watch('link'));
+        localStorage.setItem('socialLinkName', getValues('name'));
+        localStorage.setItem('link', getValues('link'));
       };
     }
-  }, [socialLinkId, setValue, watch]);
+  }, [socialLinkId, setValue, getValues]);
 
   const onSubmit: SubmitHandler<SocialLinkInputs> = async (data) => {
     try {

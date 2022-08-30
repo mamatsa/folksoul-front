@@ -20,7 +20,7 @@ const AddBandMember = () => {
     register,
     handleSubmit,
     setValue,
-    watch,
+    getValues,
     formState: { errors },
   } = useForm<BandMemberInputs>();
 
@@ -68,14 +68,14 @@ const AddBandMember = () => {
       }
       // Save values on unmount
       return () => {
-        localStorage.setItem('bandMemberName', watch('name') || '');
-        localStorage.setItem('instrument', watch('instrument'));
-        localStorage.setItem('orbitWidth', watch('orbitWidth').toString());
-        localStorage.setItem('color', watch('color'));
-        localStorage.setItem('bio', watch('bio'));
+        localStorage.setItem('bandMemberName', getValues('name') || '');
+        localStorage.setItem('instrument', getValues('instrument'));
+        localStorage.setItem('orbitWidth', getValues('orbitWidth').toString());
+        localStorage.setItem('color', getValues('color'));
+        localStorage.setItem('bio', getValues('bio'));
       };
     }
-  }, [memberId, setValue, watch]);
+  }, [memberId, setValue, getValues]);
 
   const onSubmit: SubmitHandler<BandMemberInputs> = async (data) => {
     try {
