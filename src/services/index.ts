@@ -9,4 +9,5 @@ export {
   deleteBandMemberRequest,
   getSocialLinksRequest,
   putSocialLinkIconRequest,
+  deleteSocialLinkRequest,
 } from './backendRequests';

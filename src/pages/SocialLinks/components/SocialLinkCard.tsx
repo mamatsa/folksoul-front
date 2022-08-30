@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { SocialLink } from 'types';
+import { SocialLink, ResponseData } from 'types';
 import { Link } from 'react-router-dom';
 import { ModifyButton, DeleteButton, EditPhotoButton } from 'components';
 import { ImageUploadModal } from 'components';
-import { putSocialLinkIconRequest } from 'services';
+import { putSocialLinkIconRequest, deleteSocialLinkRequest } from 'services';
 
 const SocialLinkCard: React.FC<{
   socialLink: SocialLink;
@@ -23,6 +23,19 @@ const SocialLinkCard: React.FC<{
     }
     closeModal();
     props.socialLinkChangeHandler();
+  };
+
+  const socialLinkDeleteHandler = async () => {
+    try {
+      const res: ResponseData = await deleteSocialLinkRequest(
+        props.socialLink._id
+      );
+      if (res.status === 'success') {
+        props.socialLinkChangeHandler();
+      }
+    } catch (error) {
+      // error
+    }
   };
 
   return (
@@ -58,7 +71,7 @@ const SocialLinkCard: React.FC<{
         <Link to='#'>
           <ModifyButton />
         </Link>
-        <Link to='#'>
+        <Link to='#' onClick={socialLinkDeleteHandler}>
           <DeleteButton />
         </Link>
       </div>
