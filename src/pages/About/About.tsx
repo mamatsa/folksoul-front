@@ -41,8 +41,8 @@ const About = () => {
   return (
     <DashboardWrapper>
       <DashboardPageTitle title='ბენდის შესახებ' />
-      <div className=' w-full h-full flex flex-col items-center py-8 drop-shadow-thin'>
-        <div className='relative w-52 h-52 mx-5 p-[7px] rounded-full bg-about-purple flex justify-center items-center'>
+      <div className='w-[93%] h-full flex flex-col items-center gap-12  py-8 mb-20 overflow-y-scroll overflow-x-hidden scrollbar-thin scrollbar-track-scrollbar-blue scrollbar-thumb-primary-dark-blue scrollbar-thumb-rounded scrollbar-track-rounded'>
+        <div className='relative w-52 h-52 min-h-52 mx-5 p-[7px] rounded-full bg-about-purple flex justify-center items-center drop-shadow-thin'>
           <div className='w-full h-full rounded-full flex items-center justify-center overflow-hidden'>
             {bandInformation?.imageUrl && (
               <img
@@ -65,6 +65,11 @@ const About = () => {
             <EditPhotoButton />
           </Link>
         </div>
+        {bandInformation?.about && (
+          <div className='flex justify-center'>
+            <p className='w-5/6 text-justify'>{bandInformation.about}</p>
+          </div>
+        )}
       </div>
       {showImageUploadModal && (
         <ImageUploadModal
