@@ -86,6 +86,7 @@ const ImageUploadModal: React.FC<{
               <img
                 src={process.env.REACT_APP_BASE_URL + props.imageUrl}
                 alt='avatar'
+                className='w-full h-auto'
               />
             )}
           </div>
