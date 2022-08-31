@@ -6,6 +6,7 @@ const ImageUploadModal: React.FC<{
   imageUploadHandler: (image?: File) => void;
   imageUrl: string | undefined;
   title: string;
+  page?: string;
 }> = (props) => {
   const [uploadedImage, setUploadedImage] = useState<File>();
   const [preview, setPreview] = useState('');
@@ -55,7 +56,7 @@ const ImageUploadModal: React.FC<{
 
   return (
     <div className='absolute top-0 left-0 w-screen h-screen bg-modal-bg bg-opacity-95 flex justify-center items-center z-10'>
-      <div className='relative bg-white py-20 rounded-lg flex flex-col items-center justify-between gap-20'>
+      <div className='relative bg-white py-20 rounded-lg flex flex-col items-center justify-between gap-10'>
         <div
           className='absolute top-4 right-4 cursor-pointer'
           onClick={() => {
@@ -70,8 +71,12 @@ const ImageUploadModal: React.FC<{
         </div>
         <div className='flex flex-col justify-center items-center'>
           <div
-            className={`relative w-56 h-56 mx-52 rounded-full overflow-hidden bg-member-card-blue  border flex justify-center items-center shadow-small ${
-              errorMessage ? 'border-error-red' : 'border-white'
+            className={`relative w-56 h-56 mx-52 rounded-full overflow-hidden flex justify-center items-center ${
+              props.page === 'about'
+                ? 'bg-about-purple drop-shadow-thin border-[7px] border-about-purple'
+                : `bg-member-card-blue shadow-small border ${
+                    errorMessage ? 'border-error-red' : 'border-white'
+                  }`
             }`}
           >
             {uploadedImage && (
