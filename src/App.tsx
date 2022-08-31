@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Login, Dashboard, BandMembers, SocialLinks } from 'pages';
+import { Login, Dashboard, BandMembers, SocialLinks, About } from 'pages';
 import { AddBandMember } from 'pages/BandMembers/components';
 import { AddSocialLink } from 'pages/SocialLinks/components';
 
@@ -45,6 +45,7 @@ const App = () => {
             element={<AddSocialLink />}
           />
         )}
+        {token && <Route path='/about' element={<About />} />}
       </Routes>
     </Router>
   );
