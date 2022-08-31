@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react';
-import { DashboardWrapper, DashboardPageTitle } from 'components';
 import { Link } from 'react-router-dom';
-import { EditPhotoButton, ImageUploadModal } from 'components';
-import { getBandInformationRequest, putBandImageRequest } from 'services';
 import { AboutBand } from 'types';
+import { getBandInformationRequest, putBandImageRequest } from 'services';
+import {
+  DashboardWrapper,
+  DashboardPageTitle,
+  EditPhotoButton,
+  ImageUploadModal,
+  EditTextButton,
+} from 'components';
 
 const About = () => {
   const [showImageUploadModal, setShowImageUploadModal] = useState(false);
@@ -67,9 +72,14 @@ const About = () => {
         </div>
         {bandInformation?.about && (
           <div className='flex justify-center'>
-            <p className='w-5/6 text-justify'>{bandInformation.about}</p>
+            <p className='mx-24 text-justify'>{bandInformation.about}</p>
           </div>
         )}
+      </div>
+      <div className='absolute h-2/3 bottom-0 left-10 flex items-center'>
+        <Link to='#' className=''>
+          <EditTextButton />
+        </Link>
       </div>
       {showImageUploadModal && (
         <ImageUploadModal
