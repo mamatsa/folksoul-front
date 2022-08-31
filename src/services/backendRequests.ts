@@ -1,5 +1,6 @@
 import { axiosInstance } from 'services';
 import { BandMemberInputs, SocialLinkInputs } from 'types';
+import { AboutBandInputs } from 'types';
 
 export const loginRequest = async (nickname: string, password: string) => {
   const res = await axiosInstance.post('/login', {
@@ -140,6 +141,36 @@ export const deleteSocialLinkRequest = async (id: string) => {
   const res = await axiosInstance.delete('/social-link/' + id, {
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
+
+  return res.data;
+};
+
+export const getBandInformationRequest = async () => {
+  const res = await axiosInstance.get('/band-information');
+
+  return res.data;
+};
+
+export const putBandInformationRequest = async (data: AboutBandInputs) => {
+  const res = await axiosInstance.put('/band-information', data, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
+
+  return res.data;
+};
+
+export const putBandImageRequest = async (image: any) => {
+  const formData = new FormData();
+  formData.append('image', image);
+  const res = await axiosInstance.put(`/band-image`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
   });

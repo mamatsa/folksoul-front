@@ -13,4 +13,7 @@ export {
   getSocialLinkRequest,
   postSocialLinkRequest,
   putSocialLinkRequest,
+  getBandInformationRequest,
+  putBandInformationRequest,
+  putBandImageRequest,
 } from './backendRequests';
