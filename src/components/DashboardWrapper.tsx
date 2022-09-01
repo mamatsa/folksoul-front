@@ -21,7 +21,11 @@ const DashboardWrapper: React.FC<{ children: React.ReactNode }> = (props) => {
             text='სოციალური ბმულები'
             destination='/social-links'
           />
-          <NavItem Icon={NavAbout} text='ბენდის შესახებ' destination='/' />
+          <NavItem
+            Icon={NavAbout}
+            text='ბენდის შესახებ'
+            destination='/about-band'
+          />
           <NavItem
             Icon={NavLogout}
             text='გადი გარეთ'
@@ -31,7 +35,7 @@ const DashboardWrapper: React.FC<{ children: React.ReactNode }> = (props) => {
         </ul>
       </nav>
       <div className='w-full h-[90vh] flex justify-center items-center'>
-        <div className='h-full w-11/12 flex flex-col justify-evenly items-center bg-dashboard-bg shadow-inside rounded-[20px] md:w-9/12'>
+        <div className='h-full w-11/12 flex flex-col justify-evenly items-center bg-dashboard-bg shadow-inside rounded-[20px] md:w-4/5'>
           {props.children}
         </div>
       </div>
