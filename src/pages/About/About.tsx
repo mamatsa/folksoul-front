@@ -72,12 +72,14 @@ const About = () => {
         </div>
         {bandInformation?.about && (
           <div className='flex justify-center'>
-            <p className='mx-24 text-justify'>{bandInformation.about}</p>
+            <p className='mx-24 text-justify whitespace-pre-line'>
+              {bandInformation.about}
+            </p>
           </div>
         )}
       </div>
       <div className='absolute h-2/3 bottom-0 left-10 flex items-center'>
-        <Link to='#' className=''>
+        <Link to='/about-band/edit'>
           <EditTextButton />
         </Link>
       </div>

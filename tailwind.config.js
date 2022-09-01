@@ -37,6 +37,7 @@ module.exports = {
         'scrollbar-blue': '#87AEC5',
         'social-link-blue': '#2F80ED',
         'about-purple': '#3B5495',
+        'textarea-gray': '#E5E5E5',
       },
       boxShadow: {
         inside: 'inset 4px 4px 20px #4D4D4D;',

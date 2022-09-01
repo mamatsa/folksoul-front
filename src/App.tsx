@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Login, Dashboard, BandMembers, SocialLinks, About } from 'pages';
 import { AddBandMember } from 'pages/BandMembers/components';
 import { AddSocialLink } from 'pages/SocialLinks/components';
+import { EditBandInfo } from 'pages/About/components';
 
 const App = () => {
   const [token, setToken] = useState<string | null>();
@@ -45,7 +46,8 @@ const App = () => {
             element={<AddSocialLink />}
           />
         )}
-        {token && <Route path='/about' element={<About />} />}
+        {token && <Route path='/about-band' element={<About />} />}
+        {token && <Route path='/about-band/edit' element={<EditBandInfo />} />}
       </Routes>
     </Router>
   );

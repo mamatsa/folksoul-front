@@ -21,7 +21,11 @@ const DashboardWrapper: React.FC<{ children: React.ReactNode }> = (props) => {
             text='სოციალური ბმულები'
             destination='/social-links'
           />
-          <NavItem Icon={NavAbout} text='ბენდის შესახებ' destination='/about' />
+          <NavItem
+            Icon={NavAbout}
+            text='ბენდის შესახებ'
+            destination='/about-band'
+          />
           <NavItem
             Icon={NavLogout}
             text='გადი გარეთ'
