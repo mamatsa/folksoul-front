@@ -4,7 +4,7 @@ const InformationPanel: React.FC<{ imageUrl?: string; text?: string }> = (
   return (
     <div className='w-5/6 h-[60%] relative bg-panel-yellow pt-[200px] pb-[42px] pl-[65px] pr-[32px] rounded-[20px]'>
       <div className='absolute -top-[156px] left-0 w-full h-[313px] flex justify-center'>
-        <div className='w-[312px] h-[312px] border-2 border-white bg-main-purple rounded-full'>
+        <div className='w-[312px] h-[312px] border-2 border-white bg-main-purple rounded-full overflow-hidden'>
           {props.imageUrl && (
             <img
               className='w-full h-auto '

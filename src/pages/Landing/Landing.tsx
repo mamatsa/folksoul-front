@@ -11,6 +11,19 @@ const Landing = () => {
   const [bandMembers, setBandMembers] = useState<BandMember[]>();
   const [bandInformation, setBandInformation] = useState<AboutBand>();
 
+  let panelImage;
+  let panelInfo;
+  if (pausedPlanet && bandMembers) {
+    const bandMember = bandMembers.find((member) => {
+      return member._id === pausedPlanet;
+    });
+    panelImage = bandMember?.avatarUrl;
+    panelInfo = bandMember?.bio;
+  } else if (bandInformation) {
+    panelImage = bandInformation.imageUrl;
+    panelInfo = bandInformation.about;
+  }
+
   useEffect(() => {
     const getBandMembers = async () => {
       try {
@@ -71,10 +84,7 @@ const Landing = () => {
           })}
       </div>
       <div className='h-screen w-1/2 flex items-end mb-[200px] justify-center'>
-        <InformationPanel
-          text={bandInformation?.about}
-          imageUrl={bandInformation?.imageUrl}
-        />
+        <InformationPanel text={panelInfo} imageUrl={panelImage} />
       </div>
     </div>
   );
