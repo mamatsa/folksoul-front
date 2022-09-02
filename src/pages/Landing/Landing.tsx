@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BandMember, ResponseData } from 'types';
 import { getBandMembersRequest } from 'services';
-import styles from 'pages/Landing/style';
+// import styles from 'pages/Landing/style';
 import { SunNote } from 'components';
 import { Orbit } from 'pages/Landing/components';
 
@@ -31,7 +31,7 @@ const Landing = () => {
 
   return (
     <div className=' w-full h-screen flex items-center overflow-hidden'>
-      <div className={styles.orbitsContainer}>
+      <div className='absolute bottom-0 left-0 h-[900px] w-[900px] flex justify-center items-center overflow-hidden'>
         <div
           className={`z-[100] ${!pausedPlanet && 'animate-pulse'} ${
             pausedPlanet && 'cursor-pointer'
@@ -48,6 +48,7 @@ const Landing = () => {
                 stopPlanetsHandler={stopPlanetsHandler}
                 bandMember={bandMember}
                 key={i}
+                numeration={i}
               />
             );
           })}
