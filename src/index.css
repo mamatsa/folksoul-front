@@ -28,6 +28,29 @@ a,
 .button {
   font-family: 'bpg_nino_mtavruli_normal';
 }
+.planet {
+  width: 80px;
+  height: 80px;
+  transform-origin: 200% center;
+  position: relative;
+  animation: rotate 8s linear infinite;
+  margin-left: -40px;
+}
+.planet::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border: 1px solid white;
+  border-radius: 100%;
+  background: blue;
+  animation: rotate 8s linear reverse infinite;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 @tailwind base;
 @tailwind components;
