@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { BandMember, ResponseData, AboutBand } from 'types';
-import { getBandMembersRequest, getBandInformationRequest } from 'services';
+import { BandMember, ResponseData, AboutBand, SocialLink } from 'types';
+import {
+  getBandMembersRequest,
+  getBandInformationRequest,
+  getSocialLinksRequest,
+} from 'services';
 import { SunNote } from 'components';
 import { Orbit, InformationPanel } from 'pages/Landing/components';
 import { FolksoulLogo } from 'assets';
 
 const Landing = () => {
-  const [pausedPlanet, setPausedPlanet] = useState('');
   const [bandMembers, setBandMembers] = useState<BandMember[]>();
   const [bandInformation, setBandInformation] = useState<AboutBand>();
+  const [socialLinks, setSocialLinks] = useState<SocialLink[]>();
+  const [pausedPlanet, setPausedPlanet] = useState('');
 
   let panelImage;
   let panelInfo;
@@ -30,7 +35,7 @@ const Landing = () => {
         const res: ResponseData = await getBandMembersRequest();
         setBandMembers(res.data.bandMembers);
       } catch (error) {
-        console.log(error.message);
+        //
       }
     };
     const getBandInformation = async () => {
@@ -38,12 +43,23 @@ const Landing = () => {
         const res: ResponseData = await getBandInformationRequest();
         setBandInformation(res.data.band);
       } catch (error) {
-        console.log(error);
+        //
+      }
+    };
+    const getSocialLinks = async () => {
+      try {
+        const res: ResponseData = await getSocialLinksRequest();
+        setSocialLinks(res.data.socialLinks);
+      } catch (error) {
+        //
       }
     };
     getBandInformation();
     getBandMembers();
+    getSocialLinks();
   }, []);
+
+  console.log(1212);
 
   const stopPlanetsHandler = (memberId: string) => {
     setPausedPlanet(memberId);
@@ -83,8 +99,27 @@ const Landing = () => {
             );
           })}
       </div>
-      <div className='h-screen w-1/2 flex items-end mb-[200px] justify-center'>
+      <div className='h-screen w-1/2 flex flex-col items-center justify-end'>
         <InformationPanel text={panelInfo} imageUrl={panelImage} />
+        <div className='flex mt-6 mb-10 gap-7'>
+          {socialLinks &&
+            socialLinks.map((socialLink, i) => {
+              return (
+                <a
+                  href={socialLink.link}
+                  key={i}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  <img
+                    src={process.env.REACT_APP_BASE_URL + socialLink.iconUrl!}
+                    alt={socialLink.name}
+                    className='w-10 h-auto'
+                  />
+                </a>
+              );
+            })}
+        </div>
       </div>
     </div>
   );
