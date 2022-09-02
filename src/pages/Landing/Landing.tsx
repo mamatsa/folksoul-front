@@ -1,46 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { BandMember, ResponseData } from 'types';
+import { getBandMembersRequest } from 'services';
 import styles from 'pages/Landing/style';
 import { SunNote } from 'components';
+import { Orbit } from 'pages/Landing/components';
 
 const Landing = () => {
-  const [stopPlanets, setStopPlanets] = useState(false);
-  const stopPlanetsHandler = () => {
-    setStopPlanets((prevState) => {
-      return !prevState;
-    });
+  const [pausedPlanet, setPausedPlanet] = useState('');
+  const [bandMembers, setBandMembers] = useState<BandMember[]>();
+
+  useEffect(() => {
+    const getBandMembers = async () => {
+      try {
+        const res: ResponseData = await getBandMembersRequest();
+        setBandMembers(res.data.bandMembers);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getBandMembers();
+  }, []);
+
+  const stopPlanetsHandler = (memberId: string) => {
+    setPausedPlanet(memberId);
+  };
+
+  const startPlanetsHandler = () => {
+    setPausedPlanet('');
   };
 
   return (
-    <div className=' w-full h-screen flex items-center'>
+    <div className=' w-full h-screen flex items-center overflow-hidden'>
       <div className={styles.orbitsContainer}>
-        <div className={`${!stopPlanets && 'animate-pulse'}`}>
+        <div
+          className={`z-[100] ${!pausedPlanet && 'animate-pulse'} ${
+            pausedPlanet && 'cursor-pointer'
+          }`}
+          onClick={startPlanetsHandler}
+        >
           <SunNote />
         </div>
-        <div className={styles.staticOrbit}>
-          <div
-            className={`${styles.rotatingOrbit} ${stopPlanets && styles.stop}`}
-          >
-            <div
-              className={`relative w-[80px] h-[80px] -ml-[40px] ${
-                styles.planet
-              } ${
-                stopPlanets && `${styles.stop} w-[88px] h-[88px] -ml-[44px]`
-              }`}
-              onClick={stopPlanetsHandler}
-            >
-              <div className='w-full h-full overflow-hidden rounded-full'>
-                <img src='' alt='' className='w-full h-auto scale-125' />
-              </div>
-              <div
-                className={`absolute -bottom-[16px] right-0 left-0 pb-[3px] pt-[1px] bg-landing-yellow text-sm text-primary-dark-blue flex items-center justify-center rounded-full border-4 border-green-500 ${
-                  stopPlanets && 'scale-110'
-                }`}
-              >
-                name
-              </div>
-            </div>
-          </div>
-        </div>
+        {bandMembers &&
+          bandMembers.map((bandMember, i) => {
+            return (
+              <Orbit
+                pausedPlanet={pausedPlanet}
+                stopPlanetsHandler={stopPlanetsHandler}
+                bandMember={bandMember}
+                key={i}
+              />
+            );
+          })}
       </div>
     </div>
   );
