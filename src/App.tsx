@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Login, Dashboard, BandMembers, SocialLinks, About } from 'pages';
+import {
+  Login,
+  Dashboard,
+  BandMembers,
+  SocialLinks,
+  About,
+  Landing,
+} from 'pages';
 import { AddBandMember } from 'pages/BandMembers/components';
 import { AddSocialLink } from 'pages/SocialLinks/components';
 import { EditBandInfo } from 'pages/About/components';
@@ -20,7 +27,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<h1>Welcome</h1>} />
+        <Route path='/' element={<Landing />} />
         <Route path='/login' element={<Login onLogin={loginHandler} />} />
         {token && <Route path='/dashboard' element={<Dashboard />} />}
         {token && <Route path='/band-members' element={<BandMembers />} />}

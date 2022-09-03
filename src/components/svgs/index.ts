@@ -9,3 +9,4 @@ export { default as DeleteButton } from './DeleteButton';
 export { default as EditPhotoButton } from './EditPhotoButton';
 export { default as ExitButton } from './ExitButton';
 export { default as EditTextButton } from './EditTextButton';
+export { default as SunNote } from './SunNote';

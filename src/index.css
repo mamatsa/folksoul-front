@@ -15,6 +15,7 @@ html {
 
 body {
   font-family: 'bpg_arial_2009';
+  /* overflow: hidden; */
 }
 
 h1,
@@ -27,6 +28,12 @@ li,
 a,
 .button {
   font-family: 'bpg_nino_mtavruli_normal';
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @tailwind base;

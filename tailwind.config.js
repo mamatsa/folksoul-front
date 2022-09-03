@@ -38,6 +38,9 @@ module.exports = {
         'social-link-blue': '#2F80ED',
         'about-purple': '#3B5495',
         'textarea-gray': '#E5E5E5',
+        'landing-yellow': '#F2C94C',
+        'panel-yellow': '#FBD560',
+        'main-purple': '#534571',
       },
       boxShadow: {
         inside: 'inset 4px 4px 20px #4D4D4D;',
