@@ -59,8 +59,6 @@ const Landing = () => {
     getSocialLinks();
   }, []);
 
-  console.log(1212);
-
   const stopPlanetsHandler = (memberId: string) => {
     setPausedPlanet(memberId);
   };
