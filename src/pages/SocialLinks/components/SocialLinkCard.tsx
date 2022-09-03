@@ -83,6 +83,7 @@ const SocialLinkCard: React.FC<{
           closeModal={closeModal}
           imageUploadHandler={imageUploadHandler}
           imageUrl={props.socialLink.iconUrl}
+          imageName={props.socialLink.name}
         />
       )}
     </div>
