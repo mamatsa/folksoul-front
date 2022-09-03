@@ -34,7 +34,7 @@ const Input: React.FC<{
     },
     orbitWidth: {
       pattern: {
-        value: /^[1-9]*$/,
+        value: /^[0-9]*$/,
         message: 'უნდა იყოს რიცხვი',
       },
     },
