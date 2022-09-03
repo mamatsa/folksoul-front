@@ -7,6 +7,7 @@ import {
   SocialLinks,
   About,
   Landing,
+  NotFound,
 } from 'pages';
 import { AddBandMember } from 'pages/BandMembers/components';
 import { AddSocialLink } from 'pages/SocialLinks/components';
@@ -55,6 +56,7 @@ const App = () => {
         )}
         {token && <Route path='/about-band' element={<About />} />}
         {token && <Route path='/about-band/edit' element={<EditBandInfo />} />}
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </Router>
   );
