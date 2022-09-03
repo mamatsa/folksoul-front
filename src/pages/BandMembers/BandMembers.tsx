@@ -40,7 +40,7 @@ const BandMembers = () => {
     <>
       <DashboardWrapper>
         <DashboardPageTitle title='ჯგუფის წევრები' />
-        <div className=' w-full h-full flex flex-col items-center justify-evenly'>
+        <div className=' w-full h-full flex flex-col items-center justify-start gap-10 mt-8 xl:mt-20 xl:gap-28'>
           <div className='flex flex-wrap gap-4 justify-center px-2 2xl:gap-16'>
             {bandMembers &&
               bandMembers.map((bandMember, i) => {

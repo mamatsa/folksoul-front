@@ -7,6 +7,7 @@ const ImageUploadModal: React.FC<{
   imageUrl: string | undefined;
   title: string;
   page?: string;
+  imageName?: string;
 }> = (props) => {
   const [uploadedImage, setUploadedImage] = useState<File>();
   const [preview, setPreview] = useState('');
@@ -69,14 +70,21 @@ const ImageUploadModal: React.FC<{
           <h2 className='text-lg mb-2'>{props.title}</h2>
           <div className='h-[1px] w-5/6 bg-gray-400 -mx-10'></div>
         </div>
+        {props.imageName && (
+          <h3 className='text-lg mt-2 -mb-3'>{props.imageName}</h3>
+        )}
         <div className='flex flex-col justify-center items-center'>
           <div
-            className={`relative w-56 h-56 mx-52 rounded-full overflow-hidden flex justify-center items-center ${
-              props.page === 'about'
-                ? 'bg-about-purple drop-shadow-thin border-[7px] border-about-purple'
-                : `bg-member-card-blue shadow-small border ${
-                    errorMessage ? 'border-error-red' : 'border-white'
-                  }`
+            className={`relative w-56 h-56 mx-52 overflow-hidden flex justify-center items-center ${
+              props.page === 'about' &&
+              `rounded-full bg-about-purple drop-shadow-thin border-[7px] border-about-purple ${
+                errorMessage && 'border border-error-red'
+              }`
+            } ${
+              props.page === 'members' &&
+              `rounded-full bg-member-card-blue shadow-small border ${
+                errorMessage ? 'border-error-red' : 'border-white'
+              }`
             }`}
           >
             {uploadedImage && (

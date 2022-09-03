@@ -94,6 +94,7 @@ const MemberCard: React.FC<{
           closeModal={closeModal}
           imageUploadHandler={imageUploadHandler}
           imageUrl={props.bandMember.avatarUrl}
+          page='members'
         />
       )}
       {showDetailedInfoModal && (
