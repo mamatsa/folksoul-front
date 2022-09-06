@@ -10,5 +10,8 @@ export default defineConfig({
       return config;
     },
   },
+  env: {
+    baseApiUrl: 'https://folksoul-api.otar.redberryinternship.ge/',
+  },
   video: false,
 });

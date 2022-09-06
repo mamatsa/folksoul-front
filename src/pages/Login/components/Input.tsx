@@ -37,7 +37,10 @@ const Input: React.FC<{
         }`}
       />
       {error && (
-        <p className=' text-[13px] text-red-600 mt-0 ml-2 xs:absolute xs:bottom-1 xs:ml-5'>
+        <p
+          className=' text-[13px] text-red-600 mt-0 ml-2 xs:absolute xs:bottom-1 xs:ml-5'
+          data-cy={props.name + '-error'}
+        >
           {error.message as string}
         </p>
       )}
