@@ -7,6 +7,7 @@ Folksoul is a music band website, where you can view information about the band 
 - [Prerequisites](#prerequisites)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
+- [Testing](#testing)
 - [Project Structure](#project-structure)
 - [Deployment](#deployment)
 - [Resources](#resources)
@@ -76,6 +77,26 @@ yarn run start
 
 ```sh
 npm run build
+```
+
+#
+
+### Testing
+
+This application is test driven. To write e2e and integration tests `@cypress` is used. You can find all of the tests into following path: `/cypress/e2e/*.cy.ts`
+
+You can run cypress tests using following commands:
+
+1\. Copy cypress configuration file and if you need feel free to change it:
+
+```sh
+cp cypress.config.ts.example cypress.config.ts
+```
+
+2\. Open cypress:
+
+```sh
+npx cypress open
 ```
 
 #
