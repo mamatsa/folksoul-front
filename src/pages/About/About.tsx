@@ -67,6 +67,7 @@ const About = () => {
               onClick={() => {
                 setShowImageUploadModal(true);
               }}
+              data-cy='update-band-image'
             >
               <EditPhotoButton />
             </Link>
@@ -80,7 +81,7 @@ const About = () => {
           )}
         </div>
         <div className='absolute h-2/3 bottom-0 left-10 flex items-center'>
-          <Link to='/about-band/edit'>
+          <Link to='/about-band/edit' data-cy='edit-band-info'>
             <EditTextButton />
           </Link>
         </div>

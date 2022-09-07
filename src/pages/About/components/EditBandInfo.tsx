@@ -22,10 +22,7 @@ const EditBandInfo = () => {
         const res: ResponseData = await getBandInformationRequest();
         setValue('about', res.data.band.about);
       } catch (e) {
-        setError('about', {
-          type: 'backend',
-          message: 'დაფიქსირდა სერვერთან დაკავშირებული შეცდომა',
-        });
+        //
       }
     };
     getBandInformation();
@@ -55,7 +52,7 @@ const EditBandInfo = () => {
         >
           <div className='w-full h-full pl-6 pr-7 py-4 rounded-[10px] bg-textarea-gray shadow-small'>
             <textarea
-              id='n'
+              id='about'
               {...register('about', {
                 required: {
                   value: true,
@@ -71,12 +68,14 @@ const EditBandInfo = () => {
           <button
             type='submit'
             className='button bg-button-green text-content-white rounded-lg text-lg mt-0.5 px-12 pt-3 pb-2 tracking-wide'
+            data-cy='submit-band-info'
           >
             შეინახე
           </button>
           <Link
             to='/about-band'
             className='text-link-blue underline text-lg font-bold mt-4'
+            data-cy='go-back'
           >
             გადი უკან
           </Link>
