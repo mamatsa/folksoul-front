@@ -52,6 +52,7 @@ const Orbit: React.FC<{
             animationPlayState: props.pausedPlanet ? 'paused' : 'running',
             backgroundColor: props.bandMember.color,
           }}
+          data-cy={'planet-' + props.numeration}
         >
           <div className='w-full h-full overflow-hidden rounded-full cursor-pointer'>
             <img
