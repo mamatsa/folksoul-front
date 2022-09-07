@@ -10,27 +10,36 @@ const DashboardWrapper: React.FC<{ children: React.ReactNode }> = (props) => {
     <div className='h-screen flex items-center'>
       <nav className='py-20 bg-dashboard-dark border-y border-r border-nav-border rounded-r-xl'>
         <ul className='flex flex-col gap-5 `'>
-          <NavItem Icon={NavMain} text='მთავარი' destination='/dashboard' />
+          <NavItem
+            Icon={NavMain}
+            text='მთავარი'
+            destination='/dashboard'
+            testId='nav-dashboard'
+          />
           <NavItem
             Icon={NavMember}
             text='ჯგუფის წევრები'
             destination='/band-members'
+            testId='nav-members'
           />
           <NavItem
             Icon={NavSocial}
             text='სოციალური ბმულები'
             destination='/social-links'
+            testId='nav-social'
           />
           <NavItem
             Icon={NavAbout}
             text='ბენდის შესახებ'
             destination='/about-band'
+            testId='nav-about'
           />
           <NavItem
             Icon={NavLogout}
             text='გადი გარეთ'
             destination='/'
             logoutHandler={logoutHandler}
+            testId={'nav-logout'}
           />
         </ul>
       </nav>

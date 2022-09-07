@@ -13,6 +13,7 @@ const DetailedInfoModal: React.FC<{
           onClick={() => {
             props.closeModal();
           }}
+          data-cy='modal-exit-button'
         >
           <ExitButton />
         </div>

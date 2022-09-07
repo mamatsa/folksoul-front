@@ -24,7 +24,7 @@ const BandMembers = () => {
         setBandMembers(members.data.bandMembers);
         setNumberOfPages(Math.ceil(members.data.bandMembers.length / 3));
       } catch (e) {
-        console.log('something went wrong');
+        //
       }
     };
     getBandMembers();
@@ -74,6 +74,7 @@ const BandMembers = () => {
                     onClick={() => {
                       setCurrentPage(i);
                     }}
+                    data-cy={`pagination-button-${i}`}
                   ></div>
                 );
               })}
@@ -83,6 +84,7 @@ const BandMembers = () => {
         <Link
           to='/band-members/add-member'
           className='text-link-blue underline text-lg font-bold mb-20'
+          data-cy='add-member'
         >
           ახალი წევრი გვყავს?
         </Link>

@@ -63,6 +63,7 @@ const ImageUploadModal: React.FC<{
           onClick={() => {
             props.closeModal();
           }}
+          data-cy='modal-exit-button'
         >
           <ExitButton />
         </div>
@@ -109,6 +110,7 @@ const ImageUploadModal: React.FC<{
             id='image'
             name='image'
             className=' hidden'
+            data-cy='file-upload-input'
           />
         </form>
 
@@ -117,6 +119,7 @@ const ImageUploadModal: React.FC<{
             type='submit'
             className='button bg-button-green text-content-white rounded-lg text-lg px-6 pt-2 pb-1 tracking-wide'
             onClick={acceptUpload}
+            data-cy='save-uploaded-file'
           >
             შეინახე
           </button>
