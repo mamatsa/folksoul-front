@@ -46,7 +46,7 @@ describe('About page', () => {
     cy.get('[data-cy="update-band-image"]').click();
     cy.get('[data-cy="file-upload-input"]').attachFile('avatar.png');
     cy.fixture('getAboutBandInfo.json').then((body) => {
-      cy.intercept('PUT', `${Cypress.env('baseApiUrl')}band-imagegit `, {
+      cy.intercept('PUT', `${Cypress.env('baseApiUrl')}band-image `, {
         statusCode: 200,
         body,
       });
