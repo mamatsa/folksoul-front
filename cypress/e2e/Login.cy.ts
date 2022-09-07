@@ -49,15 +49,7 @@ describe('Login page', () => {
   });
 
   it('User can log in', () => {
-    cy.get('#nickname').type('nickname');
-    cy.get('#password').type('password');
-    cy.fixture('login.json').then((body) => {
-      cy.intercept('POST', `${Cypress.env('baseApiUrl')}login`, {
-        statusCode: 200,
-        body,
-      });
-    });
-    cy.get('#submitLogin').click();
+    cy.login();
     cy.url().should('include', '/dashboard');
   });
 });
