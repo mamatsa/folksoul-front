@@ -118,12 +118,19 @@ describe('Band Members page', () => {
     cy.get('[data-cy="modal-exit-button"]').click();
     cy.get('[data-cy="avatar-1-update-button"]').click();
     cy.get('[data-cy="file-upload-input"]').attachFile('avatar.png');
-    cy.fixture('bandMember.json').then((body) => {
-      cy.intercept('PUT', `${Cypress.env('baseApiUrl')}band-member/avatar/1`, {
-        statusCode: 200,
-        body,
-      });
-    });
+    cy.fixture('bandMember.json')
+      .then((body) => {
+        cy.intercept(
+          'PUT',
+          `${Cypress.env('baseApiUrl')}band-member/avatar/1`,
+          {
+            statusCode: 200,
+            body,
+          }
+        );
+      })
+      .as('req');
     cy.get('[data-cy="save-uploaded-file"]').click();
+    cy.wait('@req');
   });
 });
