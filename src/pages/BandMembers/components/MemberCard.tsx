@@ -9,8 +9,7 @@ import {
 } from 'components';
 import { DetailedInfoModal } from 'pages/BandMembers/components';
 import { BandMember, ResponseData } from 'types';
-import { deleteBandMemberRequest } from 'services';
-import { putMemberAvatarRequest } from 'services';
+import { deleteBandMemberRequest, putMemberAvatarRequest } from 'services';
 
 const MemberCard: React.FC<{
   bandMember: BandMember;
@@ -65,6 +64,7 @@ const MemberCard: React.FC<{
           onClick={() => {
             setShowAvatarEditModal(true);
           }}
+          data-cy={`avatar-${props.bandMember._id}-update-button`}
         >
           <EditPhotoButton />
         </Link>
@@ -78,13 +78,21 @@ const MemberCard: React.FC<{
           onClick={() => {
             setShowDetailedInfoModal(true);
           }}
+          data-cy={`member-${props.bandMember._id}-view-button`}
         >
           <ViewButton />
         </Link>
-        <Link to={'/band-members/update-member/' + props.bandMember._id}>
+        <Link
+          to={'/band-members/update-member/' + props.bandMember._id}
+          data-cy={`member-${props.bandMember._id}-edit-button`}
+        >
           <ModifyButton />
         </Link>
-        <Link to='#' onClick={memberDeleteHandler}>
+        <Link
+          to='#'
+          onClick={memberDeleteHandler}
+          data-cy={`member-${props.bandMember._id}-delete-button`}
+        >
           <DeleteButton />
         </Link>
       </div>

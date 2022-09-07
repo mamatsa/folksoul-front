@@ -1,0 +1,40 @@
+{
+  "status": "success",
+  "data": {
+    "bandMembers": [
+      {
+        "_id": "1",
+        "name": "ხვიჩა",
+        "instrument": "გიტარა",
+        "orbitWidth": "50",
+        "color": "#1FF32F",
+        "bio": "ბიოგრაფია"
+      },
+      {
+        "_id": "2",
+        "name": "ხატია",
+        "instrument": "პიანინო",
+        "orbitWidth": "100",
+        "color": "#FFFFFF",
+        "bio": "ბიოგრაფია",
+        "avatarUrl": "/avatar.png"
+      },
+      {
+        "_id": "3",
+        "name": "ალუდა",
+        "instrument": "ფანდური",
+        "orbitWidth": "200",
+        "color": "#000000",
+        "bio": "ბიოგრაფია"
+      },
+      {
+        "_id": "4",
+        "name": "ლელა",
+        "instrument": "პიანინო",
+        "orbitWidth": "250",
+        "color": "#00FFFF",
+        "bio": "ბიოგრაფია"
+      }
+    ]
+  }
+}

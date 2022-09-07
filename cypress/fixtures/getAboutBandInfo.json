@@ -1,0 +1,9 @@
+{
+  "status": "success",
+  "data": {
+    "band": {
+      "about": "ბენდის შესახებ",
+      "imageUrl": "/image.png"
+    }
+  }
+}

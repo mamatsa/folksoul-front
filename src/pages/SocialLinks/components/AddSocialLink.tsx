@@ -36,7 +36,7 @@ const AddSocialLink = () => {
           setValue('link', socialLink.link);
         }
       } catch (error) {
-        console.log(error);
+        //
       }
     };
     if (socialLinkId) {
@@ -73,7 +73,7 @@ const AddSocialLink = () => {
         navigate('/social-links');
       }
     } catch (error) {
-      console.log(error);
+      //
     }
   };
 
@@ -112,6 +112,7 @@ const AddSocialLink = () => {
           <button
             type='submit'
             className='button bg-member-card-blue text-content-white rounded-lg text-sm font-bold mt-12 px-10 pt-4 pb-3 tracking-wide'
+            data-cy='submit-social-link'
           >
             {socialLinkId
               ? 'შეცვალე სოციალური ბმული'
@@ -120,6 +121,7 @@ const AddSocialLink = () => {
           <Link
             to='/social-links'
             className='text-link-blue underline text-lg font-bold mt-3'
+            data-cy='go-back'
           >
             გადი უკან
           </Link>

@@ -39,7 +39,7 @@ const AddBandMember = () => {
           setValue('bio', member.bio);
         }
       } catch (error) {
-        console.log(error);
+        //
       }
     };
     if (memberId) {
@@ -90,7 +90,7 @@ const AddBandMember = () => {
         navigate('/band-members');
       }
     } catch (error) {
-      console.log(error);
+      //
     }
   };
 
@@ -143,13 +143,15 @@ const AddBandMember = () => {
           <BiographyTextarea register={register} errors={errors} />
           <button
             type='submit'
-            className='button bg-member-card-blue text-content-white rounded-lg text-sm font-bold mt-12 px-10 pt-4 pb-3 tracking-wide'
+            className='button bg-member-card-blue text-content-white rounded-lg text-sm font-bold mt-12 px-10 pt-4 pb-3 tracking-wide '
+            data-cy='add-member-button'
           >
             {memberId ? 'წევრის ცვლილება' : 'დაამატე წევრი'}
           </button>
           <Link
             to='/band-members/'
             className='text-link-blue underline text-lg font-bold mt-3'
+            data-cy='go-back'
           >
             გადი უკან
           </Link>

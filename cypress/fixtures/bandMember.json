@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "data": {
+    "bandMember": {
+      "_id": "1",
+      "name": "ხვიჩა",
+      "instrument": "გიტარა",
+      "orbitWidth": "100",
+      "color": "#1FF32F",
+      "bio": "ბიოგრაფია"
+    }
+  }
+}

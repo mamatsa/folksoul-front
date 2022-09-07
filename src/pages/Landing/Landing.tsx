@@ -81,6 +81,7 @@ const Landing = () => {
             pausedPlanet && 'cursor-pointer'
           }`}
           onClick={startPlanetsHandler}
+          data-cy='sun-note'
         >
           <SunNote />
         </div>

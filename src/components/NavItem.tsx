@@ -6,6 +6,7 @@ const NavItem: React.FC<{
   text: string;
   destination: string;
   logoutHandler?: () => void;
+  testId?: string;
 }> = (props) => {
   return (
     <NavLink
@@ -16,6 +17,7 @@ const NavItem: React.FC<{
           : 'w-full pl-2 pr-2 text-white md:pl-4 md:pr-8'
       }
       onClick={props.logoutHandler}
+      data-cy={props.testId}
     >
       <li className='flex py-2 items-center text-sm whitespace-nowrap md:text-lg'>
         <div className='w-9 flex justify-start'>
