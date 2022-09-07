@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "data": {
+    "socialLinks": [
+      {
+        "_id": "1",
+        "name": "facebook",
+        "link": "https://facebook.com",
+        "iconUrl": "/icon.png"
+      }
+    ]
+  }
+}

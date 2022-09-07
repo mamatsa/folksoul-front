@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 /// <reference path="../support/index.d.ts" />
 
-describe('Login page', () => {
+describe('Dashboard welcome page', () => {
   beforeEach(() => {
     cy.visit('/login');
     cy.login();
