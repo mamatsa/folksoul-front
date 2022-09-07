@@ -128,6 +128,7 @@ const ImageUploadModal: React.FC<{
             type='submit'
             className='button bg-member-card-blue text-content-white rounded-lg text-lg px-6 pt-2 pb-1 tracking-wide'
             onClick={uploadFileHandler}
+            data-cy='upload-file'
           >
             ატვირთე
           </button>

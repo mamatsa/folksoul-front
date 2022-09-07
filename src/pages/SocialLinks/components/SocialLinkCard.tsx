@@ -55,6 +55,7 @@ const SocialLinkCard: React.FC<{
             onClick={() => {
               setShowAvatarEditModal(true);
             }}
+            data-cy='update-social-link-icon'
           >
             <EditPhotoButton />
           </Link>
@@ -70,10 +71,17 @@ const SocialLinkCard: React.FC<{
         {props.socialLink.link}
       </a>
       <div className='flex gap-4 xl:gap-16'>
-        <Link to={'/social-links/update-social-link/' + props.socialLink._id}>
+        <Link
+          to={'/social-links/update-social-link/' + props.socialLink._id}
+          data-cy='edit-social-link'
+        >
           <ModifyButton />
         </Link>
-        <Link to='#' onClick={socialLinkDeleteHandler}>
+        <Link
+          to='#'
+          onClick={socialLinkDeleteHandler}
+          data-cy='delete-social-link'
+        >
           <DeleteButton />
         </Link>
       </div>

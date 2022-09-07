@@ -15,7 +15,7 @@ const SocialLinks = () => {
         const res = await getSocialLinksRequest();
         setSocialLinks(res.data.socialLinks);
       } catch (e) {
-        console.log('something went wrong');
+        //
       }
     };
     getSocialLinks();
@@ -52,6 +52,7 @@ const SocialLinks = () => {
       <Link
         to='/social-links/add-social-link'
         className='text-link-blue underline text-lg font-bold mb-20'
+        data-cy='add-social-link'
       >
         დაამატე სოციალური ბმული
       </Link>
