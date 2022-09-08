@@ -9,6 +9,8 @@
 /coverage
 .nyc_output/
 cypress.config.ts
+/cypress/screenshots
+/cypress/videos
 
 # production
 /build
