@@ -26,15 +26,17 @@ const SocialLinkCard: React.FC<{
   };
 
   const socialLinkDeleteHandler = async () => {
-    try {
-      const res: ResponseData = await deleteSocialLinkRequest(
-        props.socialLink._id
-      );
-      if (res.status === 'success') {
-        props.socialLinkChangeHandler();
+    if (window.confirm('დარწმუნებული ხარ, რომ სოციალური ბმულის წაშლა გსურს?')) {
+      try {
+        const res: ResponseData = await deleteSocialLinkRequest(
+          props.socialLink._id
+        );
+        if (res.status === 'success') {
+          props.socialLinkChangeHandler();
+        }
+      } catch (error) {
+        // error
       }
-    } catch (error) {
-      // error
     }
   };
 
