@@ -34,15 +34,17 @@ const MemberCard: React.FC<{
   };
 
   const memberDeleteHandler = async () => {
-    try {
-      const res: ResponseData = await deleteBandMemberRequest(
-        props.bandMember._id
-      );
-      if (res.status === 'success') {
-        props.memberChangeHandler();
+    if (window.confirm('დარწმუნებული ხარ, რომ ბენდის წევრის წაშლა გსურს?')) {
+      try {
+        const res: ResponseData = await deleteBandMemberRequest(
+          props.bandMember._id
+        );
+        if (res.status === 'success') {
+          props.memberChangeHandler();
+        }
+      } catch (error) {
+        // error
       }
-    } catch (error) {
-      // error
     }
   };
 
