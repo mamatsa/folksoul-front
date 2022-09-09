@@ -56,7 +56,7 @@ const About = () => {
                     process.env.REACT_APP_BASE_URL! + bandInformation?.imageUrl
                   }
                   alt='ავატარი'
-                  className='w-full h-auto'
+                  className='w-full h-full object-cover'
                 />
               )}
             </div>

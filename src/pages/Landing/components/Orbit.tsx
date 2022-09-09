@@ -61,7 +61,7 @@ const Orbit: React.FC<{
                 process.env.REACT_APP_BASE_URL + props.bandMember.avatarUrl
               }
               alt=''
-              className='w-full h-auto scale-125'
+              className='w-full h-full object-cover'
             />
           </div>
           <div

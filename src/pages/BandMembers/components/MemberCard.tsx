@@ -56,7 +56,7 @@ const MemberCard: React.FC<{
             <img
               src={process.env.REACT_APP_BASE_URL + props.bandMember.avatarUrl}
               alt='ავატარი'
-              className='w-full h-auto'
+              className='w-full h-full object-cover'
             />
           </div>
         )}
