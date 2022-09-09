@@ -74,7 +74,7 @@ const About = () => {
           </div>
           {bandInformation?.about && (
             <div className='flex justify-center'>
-              <p className='mx-24 text-justify whitespace-pre-line'>
+              <p className='mx-24 text-justify whitespace-pre-line break-all'>
                 {bandInformation.about}
               </p>
             </div>
