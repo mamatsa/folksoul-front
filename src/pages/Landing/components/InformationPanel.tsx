@@ -16,7 +16,7 @@ const InformationPanel: React.FC<{ imageUrl?: string; text?: string }> = (
       </div>
       <div className='w-[15px] h-[15px] absolute top-[15px] left-[15px] bg-main-purple rounded-full'></div>
       <div className='w-[15px] h-[15px] absolute top-[15px] right-[15px] bg-main-purple rounded-full'></div>
-      <p className='h-full w-full box-border pr-[50px] overflow-y-scroll overflow-x-hidden scrollbar-thin scrollbar-track-primary-dark-blue scrollbar-thumb-white scrollbar-thumb-rounded scrollbar-track-rounded'>
+      <p className='h-full w-full box-border pr-[50px] overflow-y-scroll overflow-x-hidden scrollbar-thin scrollbar-track-primary-dark-blue scrollbar-thumb-white scrollbar-thumb-rounded scrollbar-track-rounded break-all'>
         {props && props.text}
       </p>
     </div>
