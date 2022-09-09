@@ -1,6 +1,8 @@
-# Folksoul
+# FolkSoul
 
-Folksoul is a music band website, where you can view information about the band and its members. Only authenticated admins can modify this information.
+FolkSoul is a music band website, where you can view information about the band and its members. Only authenticated admins can modify this information.
+
+You can visit the application from [here](https://folksoul.otar.redberryinternship.ge/).
 
 ### Table of Contents
 
