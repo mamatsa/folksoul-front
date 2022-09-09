@@ -1,7 +1,11 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { DashboardWrapper, DashboardPageTitle } from 'components';
-import { BiographyTextarea, Input } from 'pages/BandMembers/components';
+import {
+  BiographyTextarea,
+  Input,
+  ColorInput,
+} from 'pages/BandMembers/components';
 import { BandMemberInputs, BandMember, ResponseData } from 'types';
 import {
   postBandMemberRequest,
@@ -72,6 +76,7 @@ const AddBandMember = () => {
         localStorage.setItem('instrument', getValues('instrument'));
         localStorage.setItem('orbitWidth', getValues('orbitWidth').toString());
         localStorage.setItem('color', getValues('color'));
+        console.log(getValues('color'));
         localStorage.setItem('bio', getValues('bio'));
       };
     }
@@ -80,11 +85,16 @@ const AddBandMember = () => {
   const onSubmit: SubmitHandler<BandMemberInputs> = async (data) => {
     try {
       const orbitWidth = data.orbitWidth < 320 ? data.orbitWidth : 320;
+      const color = data.color.toUpperCase();
       let res: ResponseData;
       if (memberId) {
-        res = await putBandMemberRequest(memberId, { ...data, orbitWidth });
+        res = await putBandMemberRequest(memberId, {
+          ...data,
+          orbitWidth,
+          color,
+        });
       } else {
-        res = await postBandMemberRequest({ ...data, orbitWidth });
+        res = await postBandMemberRequest({ ...data, orbitWidth, color });
         localStorage.setItem('alreadyAdded', 'true');
       }
       if (res.status === 'success') {
@@ -131,12 +141,10 @@ const AddBandMember = () => {
               register={register}
               errors={errors}
             />
-            <Input
+            <ColorInput
               id='color'
               key='color'
               name='color'
-              placeholder='ფერი'
-              type='text'
               register={register}
               errors={errors}
             />
