@@ -38,19 +38,6 @@ const Input: React.FC<{
         message: 'უნდა იყოს რიცხვი',
       },
     },
-
-    color: {
-      validate: {
-        startsCorrectly: (value: string) =>
-          value.startsWith('#') || 'უნდა იწყებოდეს # -ით',
-        hasProperLength: (value: string) =>
-          value.length === 7 || 'უნდა იყოს 7 სიმბოლო',
-        containsValidChars: (value: string) =>
-          /^#([a-fA-F0-9]{6})$/.test(value) || 'დაუშვებელი სიმბოლოები',
-        inUpperCase: (value: string) =>
-          value === value.toLocaleUpperCase() || 'არაა მაღალ რეგისტრში',
-      },
-    },
   };
 
   return (

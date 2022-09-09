@@ -22,16 +22,7 @@ describe('Band Members page', () => {
   it('Member add input validations work', () => {
     cy.get('[data-cy="add-member"]').click();
     cy.get('[data-cy="add-member-button"]').click();
-    cy.get('#color').type('FFF');
-    cy.get('[data-cy="add-member-button"]').click();
-    cy.get('#color').clear();
-    cy.get('#color').type('#FFF');
-    cy.get('[data-cy="add-member-button"]').click();
-    cy.get('#color').clear();
-    cy.get('#color').type('#FFFFა#');
-    cy.get('[data-cy="add-member-button"]').click();
-    cy.get('#color').clear();
-    cy.get('#color').type('#FFFFff');
+    cy.get('#color').invoke('val', '#ff0000').trigger('change');
     cy.get('[data-cy="add-member-button"]').click();
   });
 

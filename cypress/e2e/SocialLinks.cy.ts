@@ -65,7 +65,6 @@ describe('Social links page', () => {
   });
 
   it('User can delete social link', () => {
-    cy.get('[data-cy="delete-social-link"]').click();
     cy.fixture('getSocialLink.json')
       .then((body) => {
         cy.intercept('DELETE', `${Cypress.env('baseApiUrl')}social-link/1`, {
@@ -74,6 +73,7 @@ describe('Social links page', () => {
         });
       })
       .as('req');
+    cy.get('[data-cy="delete-social-link"]').click();
     cy.wait('@req');
   });
 });

@@ -5,6 +5,12 @@ describe('Dashboard welcome page', () => {
   beforeEach(() => {
     cy.visit('/login');
     cy.login();
+    cy.fixture('getAboutBandInfo.json').then((body) => {
+      cy.intercept('GET', `${Cypress.env('baseApiUrl')}band-information`, {
+        statusCode: 200,
+        body,
+      });
+    });
   });
 
   it('User can navigate on dashboard pages', () => {
