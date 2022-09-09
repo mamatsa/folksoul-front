@@ -29,7 +29,10 @@ const App = () => {
     <Router>
       <Routes>
         <Route path='/' element={<Landing />} />
-        <Route path='/login' element={<Login onLogin={loginHandler} />} />
+        {!token && (
+          <Route path='/login' element={<Login onLogin={loginHandler} />} />
+        )}
+        {token && <Route path='/login' element={<Dashboard />} />}
         {token && <Route path='/dashboard' element={<Dashboard />} />}
         {token && <Route path='/band-members' element={<BandMembers />} />}
         {token && (
