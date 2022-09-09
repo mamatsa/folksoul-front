@@ -79,11 +79,12 @@ const AddBandMember = () => {
 
   const onSubmit: SubmitHandler<BandMemberInputs> = async (data) => {
     try {
+      const orbitWidth = data.orbitWidth < 320 ? data.orbitWidth : 320;
       let res: ResponseData;
       if (memberId) {
-        res = await putBandMemberRequest(memberId, data);
+        res = await putBandMemberRequest(memberId, { ...data, orbitWidth });
       } else {
-        res = await postBandMemberRequest(data);
+        res = await postBandMemberRequest({ ...data, orbitWidth });
         localStorage.setItem('alreadyAdded', 'true');
       }
       if (res.status === 'success') {
