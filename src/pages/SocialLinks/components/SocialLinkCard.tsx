@@ -64,7 +64,7 @@ const SocialLinkCard: React.FC<{
       </div>
       <a
         href={props.socialLink.link}
-        className='text-social-link-blue underline'
+        className='text-social-link-blue underline overflow-clip mx-5'
         target='_blank'
         rel='noreferrer'
       >
