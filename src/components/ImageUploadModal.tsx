@@ -89,13 +89,17 @@ const ImageUploadModal: React.FC<{
             }`}
           >
             {uploadedImage && (
-              <img src={preview} alt='' className='w-full h-auto' />
+              <img
+                src={preview}
+                alt=''
+                className='w-full h-full object-cover'
+              />
             )}
             {!uploadedImage && props.imageUrl && (
               <img
                 src={process.env.REACT_APP_BASE_URL + props.imageUrl}
                 alt='avatar'
-                className='w-full h-auto'
+                className='w-full h-full object-cover'
               />
             )}
           </div>

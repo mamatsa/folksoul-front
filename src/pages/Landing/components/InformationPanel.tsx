@@ -7,7 +7,7 @@ const InformationPanel: React.FC<{ imageUrl?: string; text?: string }> = (
         <div className='w-[312px] h-[312px] border-2 border-white bg-main-purple rounded-full overflow-hidden'>
           {props.imageUrl && (
             <img
-              className='w-full h-auto '
+              className='w-full h-full object-cover '
               src={process.env.REACT_APP_BASE_URL + props.imageUrl}
               alt=''
             />
